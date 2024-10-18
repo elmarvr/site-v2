@@ -5,6 +5,7 @@ import {
   currentlyPlayingTrack,
   recentlyPlayedTracks,
   type Track,
+  type SpotifyApiClient,
 } from "@ekwoka/spotify-api";
 
 export default defineEventHandler(async (event) => {
@@ -14,12 +15,12 @@ export default defineEventHandler(async (event) => {
   const result = await client(currentlyPlayingTrack());
 
   if (!result?.item) {
-    const { items } = await client(recentlyPlayedTracks({ limit: 1 }));
+    const item = await getLastPlayedTrack(client);
 
     return {
-      track: normalizeTrack(items[0].track),
+      track: normalizeTrack(item.track),
       isPlaying: false,
-      timestamp: new Date(items[0].played_at).getTime(),
+      timestamp: new Date(item.played_at).getTime(),
     };
   }
 
@@ -29,6 +30,26 @@ export default defineEventHandler(async (event) => {
     timestamp: result.timestamp,
   };
 });
+
+async function getLastPlayedTrack(client: SpotifyApiClient) {
+  const cached = await hubKV().get<{
+    track: Track;
+    played_at: string;
+  }>("spotify:last_played_track");
+
+  if (cached) {
+    return cached;
+  }
+
+  const { items } = await client(recentlyPlayedTracks({ limit: 1 }));
+
+  await hubKV().set("spotify:last_played_track", items[0], {
+    // Cache for 1 hour
+    expirationTtl: 60 * 60,
+  });
+
+  return items[0];
+}
 
 function normalizeTrack(track: Track) {
   return {

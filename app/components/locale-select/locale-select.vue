@@ -5,7 +5,7 @@ const { locale, locales, setLocale } = useI18n();
 <template>
   <UiSelect :model-value="locale" @update:model-value="setLocale">
     <slot />
-    <UiSelectContent>
+    <UiSelectContent align="end">
       <UiSelectItem
         v-for="locale in locales"
         :key="locale.code"

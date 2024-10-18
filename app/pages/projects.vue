@@ -7,32 +7,27 @@ interface Project extends MarkdownParsedContent {
   github: string;
 }
 
-const { data: projects } = await useAsyncData(
-  async () => {
-    return queryContent<Project>("projects").find();
-  },
-  {
-    transform: (data) => {
-      return data.map(({ url, github, ...project }) => {
-        const links = [
-          {
-            url: url,
-            title: "Live",
-          },
-          {
-            url: github,
-            title: "Source",
-          },
-        ].filter(({ url }) => url);
+const { data: projects } = await useAsyncData(async () => {
+  const list = await queryContent<Project>("projects").find();
 
-        return {
-          ...project,
-          links,
-        };
-      });
-    },
-  }
-);
+  return list.map(({ url, github, ...project }) => {
+    const links = [
+      {
+        url: url,
+        title: "Live",
+      },
+      {
+        url: github,
+        title: "Source",
+      },
+    ].filter(({ url }) => url);
+
+    return {
+      ...project,
+      links,
+    };
+  });
+});
 </script>
 
 <template>

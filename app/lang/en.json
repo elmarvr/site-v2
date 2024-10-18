@@ -1,4 +1,27 @@
 {
+  "nav.projects": "Projects",
+  "nav.snippets": "Snippets",
+  "nav.language": "Language",
+  "projects.recent": "Recent projects",
+  "projects.all": "All projects",
+  "snippets.recent": "Recent snippets",
+  "snippets.all": "All snippets",
+  "general.next": "Next",
+  "general.previous": "Previous",
+  "ordinal.one": "st",
+  "ordinal.two": "nd",
+  "ordinal.few": "rd",
+  "ordinal.other": "th",
+  "player.listening-now": "Listening now",
   "player.last-played-at": "Last played at",
-  "player.listening-now": "Listening now"
+  "page.index.title": "Elmar",
+  "page.index.description": "Elmar's personal site",
+  "page.snippets.title": "Elmar | Snippets",
+  "page.snippets.description": "Elmar's code snippets",
+  "page.projects.title": "Elmar | Projects",
+  "page.projects.description": "Elmar's projects",
+  "page.project.title": "Elmar | {project}",
+  "page.project.description": "Elmar's project: {project}",
+  "page.snippet.title": "Elmar | {snippet}",
+  "page.snippet.description": "Elmar's snippet: {snippet}"
 }

@@ -17,13 +17,13 @@ export const buttonVariants = compose(
     },
   })
 );
+
+export type ButtonVariants = VariantProps<typeof buttonVariants>;
 </script>
 
 <script setup lang="ts">
 import type { VariantProps } from "cva";
 import type { PrimitiveProps } from "radix-vue";
-
-type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 interface Props extends PrimitiveProps {
   class?: ClassValue;

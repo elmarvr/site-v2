@@ -1,4 +1,6 @@
 <script setup>
+import LinkButton from "~/components/ui/link-button.vue";
+
 // const head = useLocaleHead({
 //   addDirAttribute: true,
 //   identifierAttribute: "id",
@@ -9,33 +11,33 @@
 </script>
 
 <template>
-  <!-- :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" -->
   <Html>
     <Head> </Head>
-    <!-- <Head>
-        <Title>{{ title }}</Title>
-        <template v-for="link in head.link" :key="link.id">
-          <Link
-            :id="link.id"
-            :rel="link.rel"
-            :href="link.href"
-            :hreflang="link.hreflang"
-          />
-        </template>
-        <template v-for="meta in head.meta" :key="meta.id">
-          <Meta
-            :id="meta.id"
-            :property="meta.property"
-            :content="meta.content"
-          />
-        </template>
-      </Head> -->
     <Body>
       <div class="max-w-2xl mx-auto container">
-        <header>
-          <LocaleSelect>
-            <LocaleSelectTrigger />
-          </LocaleSelect>
+        <header class="flex justify-between items-center">
+          <NuxtLinkLocale to="/">
+            <h1 class="font-semibold">Elmar</h1>
+          </NuxtLinkLocale>
+          <nav>
+            <ul class="flex">
+              <li>
+                <LinkButton to="/snippets">
+                  <Icon name="ph:scissors" />
+                </LinkButton>
+              </li>
+              <li>
+                <LinkButton to="/projects">
+                  <Icon name="ph:brackets-curly" />
+                </LinkButton>
+              </li>
+              <li>
+                <LocaleSelect>
+                  <LocaleSelectTrigger />
+                </LocaleSelect>
+              </li>
+            </ul>
+          </nav>
         </header>
 
         <slot />
