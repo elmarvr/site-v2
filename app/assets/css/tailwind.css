@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: theme(colors.zinc.900);
+    --color-foreground: theme(colors.zinc.100);
+    --color-primary: theme(colors.green.500);
+    --color-primary-foreground: theme(colors.zinc.100);
+    --color-popover: theme(colors.zinc.900);
+    --color-popover-foreground: theme(colors.zinc.100);
+    /* Darken this a bit later */
+    --color-accent: theme(colors.zinc.800);
+    --color-accent-foreground: theme(colors.zinc.100);
+    --color-muted: theme(colors.zinc.700);
+    --color-muted-foreground: theme(colors.zinc.500);
+    --color-card: 210 10% 15%;
+    --color-card-foreground: theme(colors.zinc.100);
+
+    --color-border: theme(colors.zinc.700);
+    --color-ring: theme(colors.blue.500);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden font-body;
+  }
+}

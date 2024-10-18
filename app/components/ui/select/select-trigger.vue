@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { type SelectTriggerProps, useForwardProps } from "radix-vue";
+
+interface Props extends SelectTriggerProps {
+  class?: ClassValue;
+}
+
+const props = defineProps<Props>();
+
+const triggerProps = computed(() => {
+  const { class: _, ...delegated } = props;
+
+  return delegated;
+});
+
+const forwardedProps = useForwardProps(triggerProps);
+</script>
+
+<template>
+  <RadixSelectTrigger v-bind="forwardedProps" :class="cx(props.class)">
+    <slot />
+  </RadixSelectTrigger>
+</template>

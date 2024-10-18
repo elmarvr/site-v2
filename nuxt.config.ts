@@ -1,35 +1,61 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-07-30',
-  // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
-  future: { compatibilityVersion: 4 },
-
-  // https://nuxt.com/modules
   modules: [
-    '@nuxthub/core',
-    '@nuxt/eslint'
+    "@nuxthub/core",
+    "@nuxt/eslint",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "radix-vue/nuxt",
+    "@nuxt/icon",
+    // Auto import is apperantly broken
+    "~/modules/i18n-types",
+    "@nuxtjs/google-fonts",
   ],
-
-  // https://hub.nuxt.com/docs/getting-started/installation#options
-  hub: {},
-
-  // Env variables - https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
+  components: [
+    {
+      path: "~/components/ui",
+      prefix: "Ui",
+    },
+    {
+      path: "~/components",
+    },
+  ],
+  devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      // Can be overridden by NUXT_PUBLIC_HELLO_TEXT environment variable
-      helloText: 'Hello from the Edge 👋'
-    }
+      helloText: "Hello from the Edge 👋",
+    },
   },
-
-  // https://eslint.nuxt.com
+  future: { compatibilityVersion: 4 },
+  compatibilityDate: "2024-07-30",
+  hub: {},
   eslint: {
-    config: {
-      stylistic: {
-        quotes: 'single'
-      }
-    }
+    config: {},
   },
-
-  // https://devtools.nuxt.com
-  devtools: { enabled: true }
-})
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        language: "en",
+        file: "en.json",
+      },
+      {
+        code: "nl",
+        language: "nl",
+        file: "nl.json",
+      },
+    ],
+    strategy: "prefix_except_default",
+    lazy: true,
+    langDir: "lang",
+    defaultLocale: "en",
+    baseUrl: "https://elmarvr.com",
+  },
+  radix: {
+    prefix: "Radix",
+  },
+  googleFonts: {
+    families: {
+      Inconsolata: true,
+    },
+  },
+});
