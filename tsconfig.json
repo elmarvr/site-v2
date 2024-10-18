@@ -3,7 +3,6 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "noUncheckedIndexedAccess": true,
-    "strict": true
+    "noUncheckedIndexedAccess": true
   }
 }

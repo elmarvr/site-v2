@@ -1,9 +1,4 @@
 <script setup>
-const route = useRoute();
-const { t } = useI18n();
-
-t("hello-world");
-
 // const head = useLocaleHead({
 //   addDirAttribute: true,
 //   identifierAttribute: "id",
@@ -36,13 +31,15 @@ t("hello-world");
         </template>
       </Head> -->
     <Body>
-      <header>
-        <LocaleSelect>
-          <LocaleSelectTrigger />
-        </LocaleSelect>
-      </header>
+      <div class="max-w-2xl mx-auto container">
+        <header>
+          <LocaleSelect>
+            <LocaleSelectTrigger />
+          </LocaleSelect>
+        </header>
 
-      <slot />
+        <slot />
+      </div>
     </Body>
   </Html>
 </template>
