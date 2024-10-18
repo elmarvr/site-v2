@@ -64,7 +64,7 @@ async function getAccessToken(event: H3Event) {
   );
 
   await hubKV().set("spotify:access_token", access_token, {
-    ex: expires_in,
+    cacheTtl: expires_in,
   });
 
   return access_token;

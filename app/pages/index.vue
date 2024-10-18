@@ -5,5 +5,8 @@ const { data } = await useAsyncData(async () => {
 </script>
 
 <template>
+  <UiProse>
+    <ContentRendererMarkdown v-if="data" :value="data" />
+  </UiProse>
   <Spotify />
 </template>

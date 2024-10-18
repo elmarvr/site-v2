@@ -47,6 +47,10 @@ const { data } = await useFetch("/api/playback-state");
           $d(data.timestamp, {
             day: "numeric",
             month: "short",
+          })
+        }},
+        {{
+          $d(data.timestamp, {
             hour: "2-digit",
             minute: "numeric",
             timeZoneName: "short",
