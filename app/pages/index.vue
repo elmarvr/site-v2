@@ -5,9 +5,5 @@ const { data } = await useAsyncData(async () => {
 </script>
 
 <template>
-  <ContentRendererMarkdown
-    v-if="data"
-    :value="data"
-    class="prose prose-zinc prose-invert"
-  />
+  <Spotify />
 </template>

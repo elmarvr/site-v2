@@ -1,3 +1,4 @@
 {
-  "hello": "Hello, World! 123 5"
+  "player.last-played-at": "Last played at",
+  "player.listening-now": "Listening now"
 }

@@ -1,3 +1,4 @@
 {
-  "hello": "Hallo, Wereld!"
+  "player.last-played-at": "Laatst afgespeeld op",
+  "player.listening-now": "Luistert nu"
 }

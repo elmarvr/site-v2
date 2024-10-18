@@ -4,6 +4,10 @@ const i18n = {
 };
 
 export default defineNuxtConfig({
+  build: {
+    transpile: ["@ekwoka/spotify-api"],
+  },
+
   modules: [
     "@nuxthub/core",
     "@nuxt/eslint",
@@ -28,13 +32,15 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   runtimeConfig: {
-    public: {
-      helloText: "Hello from the Edge 👋",
-    },
+    spotifyRefreshToken: "",
+    spotifyClientId: "",
+    spotifyClientSecret: "",
   },
   future: { compatibilityVersion: 4 },
   compatibilityDate: "2024-07-30",
-  hub: {},
+  hub: {
+    kv: true,
+  },
   eslint: {
     config: {},
   },
