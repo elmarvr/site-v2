@@ -6,3 +6,7 @@ export const popoverVariants = compose(
   })
 );
 </script>
+
+<template>
+  <div></div>
+</template>
