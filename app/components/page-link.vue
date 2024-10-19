@@ -2,7 +2,7 @@
 import type { ParsedContent } from "@nuxt/content";
 
 defineProps<{
-  value: ParsedContent;
+  value: Pick<ParsedContent, "_path" | "title">;
   type: "previous" | "next";
 }>();
 </script>
