@@ -72,12 +72,7 @@ export const useLiveQuery = <
   const [error, setError] = React.useState<Error>();
 
   const queryClient = useQueryClient();
-  const { data } = useQuery<
-    Awaited<TQuery>,
-    DefaultError,
-    TData,
-    TQueryKey
-  >({
+  const { data } = useQuery<Awaited<TQuery>, DefaultError, TData, TQueryKey>({
     queryKey,
     staleTime: Infinity,
     ...rest,
@@ -91,14 +86,11 @@ export const useLiveQuery = <
         (query as AnySQLiteSelect).config.table;
 
     if (is(entity, Subquery) || is(entity, SQL)) {
-      setError(
-        new Error("Selecting subqueries and SQL are not supported")
-      );
+      setError(new Error("Selecting subqueries and SQL are not supported"));
     }
 
-    let listener:
-      | ReturnType<typeof addDatabaseChangeListener>
-      | undefined = undefined;
+    let listener: ReturnType<typeof addDatabaseChangeListener> | undefined =
+      undefined;
 
     if (is(entity, SQLiteTable) || is(entity, SQLiteView)) {
       const config = is(entity, SQLiteTable)

@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/content",
     "@nuxtjs/i18n",
+    "@vueuse/nuxt",
   ],
   components: [
     {
@@ -64,5 +65,8 @@ export default defineNuxtConfig({
   content: {
     locales: i18n.locales,
     defaultLocale: i18n.defaultLocale,
+    highlight: {
+      theme: "vitesse-black",
+    },
   },
 });

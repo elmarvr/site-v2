@@ -7,12 +7,7 @@ interface Props extends SelectTriggerProps {
 
 const props = defineProps<Props>();
 
-const triggerProps = computed(() => {
-  const { class: _, ...delegated } = props;
-
-  return delegated;
-});
-
+const triggerProps = reactiveOmit(props, "class");
 const forwardedProps = useForwardProps(triggerProps);
 </script>
 

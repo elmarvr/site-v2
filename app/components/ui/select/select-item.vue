@@ -8,12 +8,7 @@ interface Props extends SelectItemProps {
 
 const props = defineProps<Props>();
 
-const itemProps = computed(() => {
-  const { class: _, ...delegated } = props;
-
-  return delegated;
-});
-
+const itemProps = reactiveOmit(props, ["class"]);
 const forwardedProps = useForwardProps(itemProps);
 </script>
 

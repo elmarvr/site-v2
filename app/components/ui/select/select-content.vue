@@ -26,11 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const emit = defineEmits<SelectContentEmits>();
 
-const contentProps = computed(() => {
-  const { class: _, ...delegated } = props;
-
-  return delegated;
-});
+const contentProps = reactiveOmit(props, ["class"]);
 
 const forwarded = useForwardPropsEmits(contentProps, emit);
 </script>

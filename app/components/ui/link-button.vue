@@ -9,12 +9,7 @@ interface Props extends NuxtLinkProps {
 }
 
 const props = defineProps<Props>();
-
-const linkProps = computed(() => {
-  const { class: _, ...rest } = props;
-
-  return rest;
-});
+const linkProps = reactiveOmit(props, ["variant", "size", "class"]);
 </script>
 
 <template>
