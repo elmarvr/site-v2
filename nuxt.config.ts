@@ -1,7 +1,3 @@
-import { createResolver } from "nuxt/kit";
-
-const resolver = createResolver(import.meta.url);
-
 const i18n = {
   locales: ["en", "nl"],
   defaultLocale: "en",
@@ -19,7 +15,7 @@ export default defineNuxtConfig({
     "radix-vue/nuxt",
     "@nuxt/icon",
     "@nuxtjs/google-fonts",
-    "nuxt-content-snippet",
+    "nuxt-content-twoslash",
     "@nuxt/content",
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
@@ -66,7 +62,6 @@ export default defineNuxtConfig({
       Inconsolata: true,
     },
   },
-
   content: {
     locales: i18n.locales,
     defaultLocale: i18n.defaultLocale,

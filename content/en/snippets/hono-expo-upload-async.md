@@ -7,10 +7,10 @@ UploadAsync is a function to upload files typesafe in Expo using FileSystem.uplo
 
 :::code-group
 
-@@@ @/content/code/hono-expo-upload-async/client.ts [client]
+<!-- <<< ./content/code/hono-expo-upload-async/client.ts [client]
 
-@@@ @/content/code/hono-expo-upload-async/server.ts [server]
+<<< ./content/code/hono-expo-upload-async/server.ts [server]
 
-@@@ @/content/code/hono-expo-upload-async/upload-async.ts [upload-async]
+<<< ./content/code/hono-expo-upload-async/upload-async.ts [upload-async] -->
 
 :::
