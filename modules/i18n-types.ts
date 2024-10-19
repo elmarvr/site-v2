@@ -34,7 +34,7 @@ export default defineNuxtModule({
         const t0 = performance.now();
         const messages = locales.map((locale) => {
           const code = typeof locale === "string" ? locale : locale.code;
-          const file = resolver.resolve(`../${langDir}/${code}.json`);
+          const file = resolver.resolve(`../app/${langDir}/${code}.json`);
           const content = readFileSync(file, "utf-8");
 
           return JSON.parse(content);

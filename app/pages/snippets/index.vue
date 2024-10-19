@@ -1,9 +1,11 @@
 <script setup lang="ts">
+const { locale } = useI18n();
 const { data: snippets } = await useAsyncData("snippets", async () => {
   const snippets = await queryContent("snippets")
     .sort({
       date: -1,
     })
+    .locale(locale.value)
     .find();
 
   const grouped: {

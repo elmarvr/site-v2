@@ -45,7 +45,7 @@ async function getLastPlayedTrack(client: SpotifyApiClient) {
 
   await hubKV().set("spotify:last_played_track", items[0], {
     // Cache for 1 hour
-    expirationTtl: 60 * 60,
+    ttl: 60 * 60,
   });
 
   return items[0];
@@ -85,7 +85,7 @@ async function getAccessToken(event: H3Event) {
   );
 
   await hubKV().set("spotify:access_token", access_token, {
-    cacheTtl: expires_in,
+    ttl: expires_in,
   });
 
   return access_token;

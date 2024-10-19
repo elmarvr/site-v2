@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { MarkdownParsedContent } from "@nuxt/content";
 
+const { locale } = useI18n();
+
 interface Project extends MarkdownParsedContent {
   title: string;
   url: string;
@@ -8,7 +10,9 @@ interface Project extends MarkdownParsedContent {
 }
 
 const { data: projects } = await useAsyncData(async () => {
-  const list = await queryContent<Project>("projects").find();
+  const list = await queryContent<Project>("projects")
+    .locale(locale.value)
+    .find();
 
   return list.map(({ url, github, ...project }) => {
     const links = [

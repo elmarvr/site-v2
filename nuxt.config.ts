@@ -17,9 +17,6 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/content",
     "@nuxtjs/i18n",
-
-    // Auto import is apparently broken
-    "~/modules/i18n-types",
   ],
   components: [
     {
@@ -65,7 +62,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    sources: ["app/content"],
     locales: i18n.locales,
     defaultLocale: i18n.defaultLocale,
   },
