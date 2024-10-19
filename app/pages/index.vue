@@ -8,14 +8,10 @@ const value = ref("i");
 </script>
 
 <template>
-  <UiTabs v-model="value">
-    <UiTabsList>
-      <UiTabsTrigger value="i">Introduction</UiTabsTrigger>
-      <UiTabsTrigger value="s">Spotify</UiTabsTrigger>
-    </UiTabsList>
-    <UiTabsContent value="i"> Introduction </UiTabsContent>
-    <UiTabsContent value="s"> Spotify </UiTabsContent>
-  </UiTabs>
+  <UiPopup>
+    <UiPopupTrigger> Open </UiPopupTrigger>
+    <UiPopupContent> Test123 </UiPopupContent>
+  </UiPopup>
 
   <!-- <UiProse>
     <ContentRendererMarkdown v-if="data" :value="data" />
