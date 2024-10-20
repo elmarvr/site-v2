@@ -16,7 +16,7 @@ const ctx = inject(PopupContext)!;
   <UiPopoverContent
     @open-auto-focus.prevent
     as-child
-    :class="cx('p-2 text-sm max-w-lg', props.class)"
+    :class="cx('p-2 text-sm', props.class)"
     align="start"
     :side-offset="props.sideOffset"
   >
@@ -34,7 +34,11 @@ const ctx = inject(PopupContext)!;
   color: var(--shiki-default);
 }
 
-& pre {
+.twoslash-popup-code pre {
   @apply !p-2;
+}
+
+.twoslash-popup-code .group {
+  @apply !max-w-xl;
 }
 </style>

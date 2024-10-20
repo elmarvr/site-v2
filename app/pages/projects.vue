@@ -39,7 +39,7 @@ const { data: projects } = await useAsyncData(async () => {
     <li
       v-for="(project, index) in projects"
       :key="project._id"
-      class="space-y-3 animate-in fade-in fill-mode-both slide-in-from-bottom-10"
+      class="flex flex-col items-start gap-3 animate-in fade-in fill-mode-both slide-in-from-bottom-10"
       :style="{ animationDelay: `${100 * index}ms` }"
     >
       <div class="flex items-center">
