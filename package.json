@@ -21,6 +21,8 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/i18n": "^8.5.5",
     "@nuxtjs/mdc": "^0.9.2",
+    "@nuxtjs/robots": "^4.1.9",
+    "@nuxtjs/sitemap": "^6.1.2",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@unhead/vue": "^1.11.10",
     "@vueuse/core": "^11.1.0",

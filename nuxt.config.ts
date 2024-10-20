@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/snippets"],
+      routes: ["/", "/snippets", "/projects", "/sitemap.xml", "/robots.txt"],
     },
   },
 
@@ -39,6 +39,8 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
     "@nuxt/image",
+    "@nuxtjs/robots",
+    "@nuxtjs/sitemap",
   ],
   components: [
     {
@@ -92,5 +94,15 @@ export default defineNuxtConfig({
   },
   icon: {
     serverBundle: "local",
+  },
+
+  site: {
+    url: "https://elmarvr.com",
+    name: "Elmar's personal website",
+  },
+
+  sitemap: {
+    strictNuxtContentPaths: true,
+    autoLastmod: true,
   },
 });
