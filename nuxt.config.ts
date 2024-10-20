@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@ekwoka/spotify-api"],
   },
+  mdc: {},
+
+  css: ["@shikijs/twoslash/style-rich.css", "~/assets/css/twoslash.css"],
 
   modules: [
     "@nuxthub/core",
@@ -15,7 +18,6 @@ export default defineNuxtConfig({
     "radix-vue/nuxt",
     "@nuxt/icon",
     "@nuxtjs/google-fonts",
-    "nuxt-content-twoslash",
     "@nuxt/content",
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
@@ -67,7 +69,7 @@ export default defineNuxtConfig({
     defaultLocale: i18n.defaultLocale,
     ignores: ["/code/"],
     highlight: {
-      theme: "vitesse-black",
+      theme: "one-dark-pro",
     },
   },
 });

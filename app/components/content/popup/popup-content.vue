@@ -13,7 +13,7 @@ const ctx = inject(PopupContext)!;
   <UiPopoverContent
     @open-auto-focus.prevent
     as-child
-    :class="cx('p-2 text-sm', props.class)"
+    :class="cx('p-2 text-sm max-w-lg', props.class)"
     align="start"
     :side-offset="8"
   >
