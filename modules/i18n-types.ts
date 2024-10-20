@@ -43,11 +43,14 @@ export default defineNuxtModule({
         const ids = intersection(messages.map(Object.keys));
 
         const template = dedent`
-          import { DefineLocaleMessage } from 'vue-i18n';
-            declare module 'vue-i18n' {
-              interface DefineLocaleMessage {
-                ${ids.map((id) => `"${id}": string`).join("\n")}
-              }
+          import { DefineLocaleMessage } from "vue-i18n";
+          declare module 'vue-i18n' {
+            export type MessageId = 
+              | ${ids.map((id) => `"${id}"`).join("\n    | ")};
+
+            interface DefineLocaleMessage {
+              ${ids.map((id) => `"${id}": string`).join("\n")}
+            }
           }`;
 
         const t1 = performance.now();

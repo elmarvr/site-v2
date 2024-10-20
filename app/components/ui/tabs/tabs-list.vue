@@ -7,6 +7,8 @@ interface Props extends TabsListProps {
 
 const props = defineProps<Props>();
 const listProps = reactiveOmit(props, ["class"]);
+
+const mounted = useMounted();
 </script>
 
 <template>
@@ -16,6 +18,7 @@ const listProps = reactiveOmit(props, ["class"]);
   >
     <slot />
     <RadixTabsIndicator
+      v-if="mounted"
       class="absolute z-10 rounded -bottom-0.5 transition-all left-[--radix-tabs-indicator-position] w-[--radix-tabs-indicator-size] h-0.5 bg-primary"
     />
   </RadixTabsList>

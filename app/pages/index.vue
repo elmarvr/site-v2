@@ -1,4 +1,9 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "page.index.title",
+  description: "page.index.description",
+});
+
 const { locale } = useI18n();
 const { data: introduction } = await useAsyncData(async () => {
   return queryContent("introduction").locale(locale.value).findOne();
@@ -39,15 +44,11 @@ const { data: connect } = await useAsyncData(async () => {
             {{ $t("projects.recent") }}
           </h2>
           <ul class="space-y-3">
-            <li
-              v-for="project in recentProjects"
-              :key="project._path"
-              class="hover:underline"
-            >
+            <li v-for="project in recentProjects" :key="project._path">
               <a
                 v-if="project.url"
                 :href="project.url"
-                class="flex items-center gap-2"
+                class="flex items-center gap-2 hover:underline"
               >
                 {{ project.title }}
                 <Icon
@@ -55,7 +56,7 @@ const { data: connect } = await useAsyncData(async () => {
                   class="transform size-3.5 text-primary mt-0.5 -rotate-45"
                 />
               </a>
-              <NuxtLinkLocale to="/projects" v-else>
+              <NuxtLinkLocale v-else to="/projects" class="hover:underline">
                 {{ project.title }}
               </NuxtLinkLocale>
             </li>
@@ -67,12 +68,8 @@ const { data: connect } = await useAsyncData(async () => {
             {{ $t("snippets.recent") }}
           </h2>
           <ul class="space-y-3">
-            <li
-              v-for="snippet in recentSnippets"
-              :key="snippet._path"
-              class="hover:underline"
-            >
-              <NuxtLinkLocale :to="snippet._path">
+            <li v-for="snippet in recentSnippets" :key="snippet._path">
+              <NuxtLinkLocale :to="snippet._path" class="hover:underline">
                 {{ snippet.title }}
               </NuxtLinkLocale>
             </li>

@@ -1,18 +1,43 @@
-<script setup>
-import LinkButton from "~/components/ui/link-button.vue";
+<script setup lang="ts">
+const route = useRoute();
+const { t } = useI18n();
 
-// const head = useLocaleHead({
-//   addDirAttribute: true,
-//   identifierAttribute: "id",
-//   addSeoAttributes: true,
-// });
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
 
-// const title = computed(() => t(route.meta.title) ?? "Elmar");
+function tryT(key: string | undefined, fallback: string) {
+  return computed(() => (key ? t(key, fallback) : fallback));
+}
+
+const title = tryT(route.meta.title, "Site");
+const description = tryT(route.meta.description, t("page.index.description"));
+
+useSeoMeta({
+  title,
+  titleTemplate: "Elmar | %s",
+  description,
+});
 </script>
 
 <template>
-  <Html>
-    <Head> </Head>
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+    <Head>
+      <template v-for="link in head.link" :key="link.id">
+        <Link
+          :id="link.id"
+          :rel="link.rel"
+          :href="link.href"
+          :hreflang="link.hreflang"
+        />
+      </template>
+      <template v-for="meta in head.meta" :key="meta.id">
+        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      </template>
+    </Head>
+
     <Body>
       <div class="max-w-2xl mx-auto container">
         <header class="flex justify-between items-center py-3">
@@ -22,14 +47,14 @@ import LinkButton from "~/components/ui/link-button.vue";
           <nav>
             <ul class="flex">
               <li>
-                <LinkButton to="/projects">
+                <UiLinkButton to="/projects">
                   <Icon name="ph:brackets-curly" />
-                </LinkButton>
+                </UiLinkButton>
               </li>
               <li>
-                <LinkButton to="/snippets">
+                <UiLinkButton to="/snippets">
                   <Icon name="ph:scissors" />
-                </LinkButton>
+                </UiLinkButton>
               </li>
 
               <li>

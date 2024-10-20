@@ -1,4 +1,9 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "page.snippets.title",
+  description: "page.snippets.description",
+});
+
 const { locale } = useI18n();
 const { data: snippets } = await useAsyncData("snippets", async () => {
   const snippets = await queryContent("snippets")

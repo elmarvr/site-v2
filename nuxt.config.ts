@@ -1,5 +1,14 @@
 const i18n = {
-  locales: ["en", "nl"],
+  locales: [
+    {
+      code: "en",
+      language: "en-GB",
+    },
+    {
+      code: "nl",
+      language: "nl-NL",
+    },
+  ],
   defaultLocale: "en",
 };
 
@@ -56,8 +65,8 @@ export default defineNuxtConfig({
   },
   i18n: {
     locales: i18n.locales.map((locale) => ({
-      code: locale,
-      file: `${locale}.json`,
+      ...locale,
+      file: `${locale.code}.json`,
     })),
     defaultLocale: i18n.defaultLocale,
     strategy: "prefix_except_default",
@@ -74,7 +83,7 @@ export default defineNuxtConfig({
     },
   },
   content: {
-    locales: i18n.locales,
+    locales: i18n.locales.map(({ code }) => code),
     defaultLocale: i18n.defaultLocale,
     ignores: ["/code/"],
     highlight: {

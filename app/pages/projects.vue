@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { MarkdownParsedContent } from "@nuxt/content";
 
+definePageMeta({
+  title: "page.projects.title",
+  description: "page.projects.description",
+});
+
 const { locale } = useI18n();
 
 interface Project extends MarkdownParsedContent {
