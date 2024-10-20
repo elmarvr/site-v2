@@ -3,8 +3,11 @@ import { PopupContext } from "./popup.vue";
 
 interface Props {
   class?: ClassValue;
+  sideOffset?: number;
 }
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  sideOffset: 8,
+});
 
 const ctx = inject(PopupContext)!;
 </script>
@@ -15,7 +18,7 @@ const ctx = inject(PopupContext)!;
     as-child
     :class="cx('p-2 text-sm max-w-lg', props.class)"
     align="start"
-    :side-offset="8"
+    :side-offset="props.sideOffset"
   >
     <div
       @pointerenter="($event) => ctx.onOpenChange($event, true)"
@@ -25,3 +28,13 @@ const ctx = inject(PopupContext)!;
     </div>
   </UiPopoverContent>
 </template>
+
+<style>
+.twoslash-popup-code span {
+  color: var(--shiki-default);
+}
+
+& pre {
+  @apply !p-2;
+}
+</style>

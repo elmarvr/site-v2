@@ -9,15 +9,15 @@ const props = defineProps<{
 </script>
 
 <template>
-  <UiScrollArea class="not-prose flex max-h-[560px]">
+  <UiScrollArea class="not-prose flex prose-pre max-h-[560px]">
     <pre
       :data-filename="filename"
       :class="
-        cx(
-          'bg-card rounded text-sm flex p-2 [&_code_.line]:block [&_code_span]:!bg-transparent',
-          props.class
-        )
+        cx('bg-card rounded text-sm flex p-4 [&_code_.line]:block', props.class)
       "
+      :style="{
+        '--shiki-default-bg': 'transparent',
+      }"
     >
       <slot />
     </pre>

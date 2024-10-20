@@ -13,6 +13,8 @@ const ctx = inject(PopupContext)!;
 <template>
   <UiPopoverTrigger as-child :class="props.class">
     <span
+      :type="undefined"
+      role="button"
       @pointerenter="($event) => ctx.onOpenChange($event, true)"
       @pointerleave="($event) => ctx.onOpenChange($event, false)"
     >

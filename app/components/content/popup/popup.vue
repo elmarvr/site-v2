@@ -7,24 +7,26 @@ export const PopupContext: InjectionKey<{
 <script setup lang="ts">
 import type { InjectionKey } from "vue";
 
-const isOpen = ref(false);
-const timeoutRef = ref<NodeJS.Timeout>();
-
 interface Props {
   delay?: number;
+  static?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   delay: 200,
+  static: false,
 });
+const isOpen = ref(false);
+
+let timeout: NodeJS.Timeout | null = null;
 
 function onOpenChange(e: PointerEvent, value: boolean) {
   if (e.pointerType === "touch") return;
-  if (timeoutRef.value) {
-    clearTimeout(timeoutRef.value);
+  if (timeout) {
+    clearTimeout(timeout);
   }
 
-  timeoutRef.value = setTimeout(() => {
+  timeout = setTimeout(() => {
     isOpen.value = value;
   }, props.delay);
 }
@@ -33,7 +35,11 @@ provide(PopupContext, { onOpenChange });
 </script>
 
 <template>
-  <UiPopover v-model:open="isOpen">
+  <UiPopover
+    class="z-20"
+    :open="isOpen || static"
+    @update:open="isOpen = $event"
+  >
     <slot />
   </UiPopover>
 </template>

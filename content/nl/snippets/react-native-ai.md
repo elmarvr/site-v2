@@ -8,12 +8,12 @@ Het ondersteunt ook het doorgeven van een id om de hook op één plek aan te roe
 
 :::code-group
 
-<!-- <<< ./content/code/react-native-ai/client.tsx [client]
+<<< ./content/code/react-native-ai/client.tsx [client]
 
 <<< ./content/code/react-native-ai/server.ts [server]
 
 <<< ./content/code/react-native-ai/use-object.ts [use-object]
 
-<<< ./content/code/react-native-ai/schema.ts [schema] -->
+<<< ./content/code/react-native-ai/schema.ts [schema]
 
 :::

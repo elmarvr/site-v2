@@ -20,12 +20,27 @@ export default defineConfig({
                 popup,
                 {
                   type: "element",
-                  tagName: "PopupTrigger",
-                  properties: {
-                    class:
-                      "twoslash-hover duration-300 decoration-card group-hover:decoration-[inherit] underline underline-offset-[5px] decoration-dotted",
-                  },
+                  tagName: "HoverToken",
+                  properties: {},
                   children: [token],
+                },
+              ],
+              completionToken: {
+                tagName: "Popup",
+                properties: {
+                  static: true,
+                },
+              },
+              completionPopup: {
+                tagName: "CompletionList",
+              },
+              completionCompose: ({ popup, cursor }) => [
+                popup,
+                {
+                  type: "element",
+                  tagName: "CompletionCursor",
+                  properties: {},
+                  children: cursor.children,
                 },
               ],
             },

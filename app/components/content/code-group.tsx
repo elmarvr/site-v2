@@ -14,7 +14,7 @@ export default defineComponent(() => {
       <Tabs
         key={defaultValue}
         defaultValue={defaultValue}
-        class="bg-card rounded"
+        class="bg-card border rounded"
       >
         <TabsList>
           {tabs.map((tab) => (

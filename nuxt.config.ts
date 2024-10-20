@@ -7,9 +7,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@ekwoka/spotify-api"],
   },
-  mdc: {},
-
-  css: ["@shikijs/twoslash/style-rich.css", "~/assets/css/twoslash.css"],
 
   modules: [
     "@nuxthub/core",

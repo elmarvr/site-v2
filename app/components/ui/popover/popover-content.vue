@@ -33,12 +33,12 @@ const forwarded = useForwardPropsEmits(contentProps, emit);
 </script>
 
 <template>
-  <RadixPopoverPortal>
-    <RadixPopoverContent
-      v-bind="{ ...forwarded, ...$attrs }"
-      :class="cx(popoverVariants(), props.class)"
-    >
-      <slot />
-    </RadixPopoverContent>
-  </RadixPopoverPortal>
+  <!-- <RadixPopoverPortal> -->
+  <RadixPopoverContent
+    v-bind="{ ...forwarded, ...$attrs }"
+    :class="cx(popoverVariants(), props.class)"
+  >
+    <slot />
+  </RadixPopoverContent>
+  <!-- </RadixPopoverPortal> -->
 </template>

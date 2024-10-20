@@ -1,3 +1,4 @@
+//prettier-ignore
 //@ts-nocheck
 //@noErrors
 import * as React from "react";
@@ -19,7 +20,7 @@ const AddressForm = () => {
         {({ field }) => <input {...field} />}
       </form.Field>
       <form.Field name="">
-        // ^|
+        // ------ --- -^|
         {({ field }) => <input {...field} />}
       </form.Field>
     </form>

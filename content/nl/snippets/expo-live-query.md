@@ -7,10 +7,10 @@ De useLiveQuery hook bouwt voort op de @tanstack/query useQuery, zodat je real-t
 
 :::code-group
 
-<!-- <<< ./content/code/expo-live-query/client.tsx [client]
+<<< ./content/code/expo-live-query/client.tsx [client]
 
 <<< ./content/code/expo-live-query/use-live-query.ts [use-live-query]
 
-<<< ./content/code/expo-live-query/db.ts [db] -->
+<<< ./content/code/expo-live-query/db.ts [db]
 
 :::
