@@ -12,11 +12,11 @@ const listProps = reactiveOmit(props, ["class"]);
 <template>
   <RadixTabsList
     v-bind="listProps"
-    :class="cx('border-b relative flex px-3', props.class)"
+    :class="cx('border-b-2 relative flex px-3', props.class)"
   >
     <slot />
     <RadixTabsIndicator
-      class="absolute z-10 rounded bottom-0 transition-all left-[--radix-tabs-indicator-position] w-[--radix-tabs-indicator-size] h-0.5 bg-primary"
+      class="absolute z-10 rounded -bottom-0.5 transition-all left-[--radix-tabs-indicator-position] w-[--radix-tabs-indicator-size] h-0.5 bg-primary"
     />
   </RadixTabsList>
 </template>
