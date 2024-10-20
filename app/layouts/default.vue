@@ -15,7 +15,7 @@ import LinkButton from "~/components/ui/link-button.vue";
     <Head> </Head>
     <Body>
       <div class="max-w-2xl mx-auto container">
-        <header class="flex justify-between items-center">
+        <header class="flex justify-between items-center py-3">
           <NuxtLinkLocale to="/">
             <h1 class="font-semibold">Elmar</h1>
           </NuxtLinkLocale>

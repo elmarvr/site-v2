@@ -7,6 +7,7 @@ interface Project extends MarkdownParsedContent {
   title: string;
   url: string;
   github: string;
+  skills: string[];
 }
 
 const { data: projects } = await useAsyncData(async () => {
@@ -66,9 +67,17 @@ const { data: projects } = await useAsyncData(async () => {
         </div>
       </div>
 
-      <UiProse>
-        <ContentRendererMarkdown :value="project" />
-      </UiProse>
+      <MarkdownContent :content="project" />
+
+      <ul class="flex flex-wrap gap-2">
+        <li
+          v-for="skill in project.skills"
+          class="bg-card py-0.5 px-2 text-xs rounded"
+          :key="skill"
+        >
+          {{ skill }}
+        </li>
+      </ul>
     </li>
   </ul>
 </template>

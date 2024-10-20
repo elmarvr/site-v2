@@ -1,20 +1,82 @@
 <script setup lang="ts">
 const { locale } = useI18n();
-const { data } = await useAsyncData(async () => {
+const { data: introduction } = await useAsyncData(async () => {
   return queryContent("introduction").locale(locale.value).findOne();
 });
 
-const value = ref("i");
+const { data: recentProjects } = await useAsyncData(async () => {
+  return queryContent("projects").locale(locale.value).limit(3).find();
+});
+
+const { data: recentSnippets } = await useAsyncData(async () => {
+  return queryContent("snippets")
+    .locale(locale.value)
+    .sort({
+      date: -1,
+    })
+    .limit(3)
+    .find();
+});
+
+const { data: connect } = await useAsyncData(async () => {
+  return queryContent("connect").locale(locale.value).findOne();
+});
 </script>
 
 <template>
-  <UiPopup>
-    <UiPopupTrigger> Open </UiPopupTrigger>
-    <UiPopupContent> Test123 </UiPopupContent>
-  </UiPopup>
+  <div class="pt-8">
+    <div class="space-y-12">
+      <MarkdownContent :content="introduction" />
 
-  <!-- <UiProse>
-    <ContentRendererMarkdown v-if="data" :value="data" />
-  </UiProse>
-  <Spotify /> -->
+      <div class="grid grid-cols-2">
+        <div>
+          <h2 class="pb-5 text-muted-foreground">
+            {{ $t("projects.recent") }}
+          </h2>
+          <ul class="space-y-3">
+            <li
+              v-for="project in recentProjects"
+              :key="project._id"
+              class="hover:underline"
+            >
+              <a
+                v-if="project.url"
+                :href="project.url"
+                class="flex items-center gap-2"
+              >
+                {{ project.title }}
+                <Icon
+                  name="ph:arrow-right"
+                  class="transform size-3.5 text-primary mt-0.5 -rotate-45"
+                />
+              </a>
+              <NuxtLinkLocale to="/projects" v-else>
+                {{ project.title }}
+              </NuxtLinkLocale>
+            </li>
+          </ul>
+        </div>
+
+        <di>
+          <h2 class="pb-5 text-muted-foreground">
+            {{ $t("snippets.recent") }}
+          </h2>
+          <ul class="space-y-3">
+            <li v-for="snippet in recentSnippets" class="hover:underline">
+              <NuxtLinkLocale :to="snippet._path">
+                {{ snippet.title }}
+              </NuxtLinkLocale>
+            </li>
+          </ul>
+        </di>
+      </div>
+
+      <Spotify />
+
+      <div>
+        <h2 class="pb-5 text-muted-foreground">Connect</h2>
+        <MarkdownContent :content="connect" />
+      </div>
+    </div>
+  </div>
 </template>

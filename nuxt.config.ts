@@ -8,6 +8,10 @@ export default defineNuxtConfig({
     transpile: ["@ekwoka/spotify-api"],
   },
 
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+
   modules: [
     "@nuxthub/core",
     "@nuxt/eslint",
