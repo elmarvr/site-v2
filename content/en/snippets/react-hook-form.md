@@ -8,10 +8,10 @@ This is a snippet i use in all my React projects. A wrapper for the react-hook-f
 
 :::code-group
 
-<!-- <<< ./content/code/react-hook-form/address-form.tsx [address-form]
+<<< ./content/code/react-hook-form/address-form.tsx [address-form] twoslash
 
-<<< ./content/code/react-hook-form/use-form.tsx [use-form]
+<<< ./content/code/react-hook-form/use-form.tsx [use-form] twoslash
 
-<<< ./content/code/react-hook-form/form-field.tsx [form-field] -->
+<<< ./content/code/react-hook-form/form-field.tsx [form-field] twoslash
 
 :::

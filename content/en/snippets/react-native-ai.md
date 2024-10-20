@@ -8,12 +8,12 @@ It also supports passing an id for calling the hook in one place and rendering t
 
 :::code-group
 
-<!-- <<< ./content/code/react-native-ai/client.tsx [client]
+<<< ./content/code/react-native-ai/client.tsx [client] twoslash
 
-<<< ./content/code/react-native-ai/server.ts [server]
+<<< ./content/code/react-native-ai/server.ts [server] twoslash
 
-<<< ./content/code/react-native-ai/use-object.ts [use-object]
+<<< ./content/code/react-native-ai/use-object.ts [use-object] twoslash
 
-<<< ./content/code/react-native-ai/schema.ts [schema] -->
+<<< ./content/code/react-native-ai/schema.ts [schema] twoslash
 
 :::
