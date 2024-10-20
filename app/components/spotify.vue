@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-const { data } = useFetch("/api/playback-state");
+const { data } = useFetch("/api/playback-state", {
+  lazy: true,
+  server: false,
+});
 </script>
 
 <template>
