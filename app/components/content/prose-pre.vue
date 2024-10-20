@@ -9,10 +9,14 @@ const props = defineProps<{
 </script>
 
 <template>
-  <UiScrollArea class="not-prose flex max-h-[560px]">
+  <UiScrollArea class="not-prose flex max-h-[560px] prose-pre">
     <pre
-      :data-filename="filename"
-      :class="cx('bg-card rounded text-sm flex p-2', props.class)"
+      :class="
+        cx(
+          'bg-card rounded !text-sm flex p-2 [&_.line]:block [&_span]:!bg-transparent',
+          props.class
+        )
+      "
     >
       <slot />
     </pre>

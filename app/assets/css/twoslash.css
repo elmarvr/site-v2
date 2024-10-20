@@ -21,6 +21,31 @@
   @apply text-muted-foreground;
 }
 
+.twoslash-popup-code {
+  @apply !p-2;
+}
+
 .twoslash-completion-list svg {
   display: none;
+}
+
+.twoslash-popup-docs {
+  @apply !text-zinc-300 text-sm;
+  border-top: 1px solid var(--color-border) !important;
+}
+
+.v-popper__arrow-container {
+  @apply hidden;
+}
+
+.v-popper__inner {
+  @apply !bg-background rounded text-sm border !border-border;
+}
+
+.v-popper__popper--show-from {
+  @apply transition-transform zoom-in-95;
+}
+
+.v-popper__popper .prose-pre {
+  @apply max-h-[320px];
 }

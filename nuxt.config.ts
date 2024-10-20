@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     transpile: ["@ekwoka/spotify-api"],
   },
 
+  css: ["~/assets/css/twoslash.css"],
+
   modules: [
     "@nuxthub/core",
     "@nuxt/eslint",
@@ -70,4 +72,5 @@ export default defineNuxtConfig({
       theme: "vitesse-black",
     },
   },
+  twoslash: {},
 });
