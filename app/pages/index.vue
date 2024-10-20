@@ -24,10 +24,7 @@ const { data: recentSnippets } = await useAsyncData(async () => {
 });
 
 const { data: connect } = await useAsyncData(async () => {
-  return queryContent("connect")
-    .locale(locale.value)
-
-    .findOne();
+  return queryContent("connect").locale(locale.value).findOne();
 });
 </script>
 

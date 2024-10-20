@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
+    "@nuxt/image",
   ],
   components: [
     {
@@ -79,5 +80,8 @@ export default defineNuxtConfig({
     highlight: {
       theme: "one-dark-pro",
     },
+  },
+  icon: {
+    serverBundle: "local",
   },
 });

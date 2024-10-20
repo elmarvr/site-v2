@@ -22,15 +22,16 @@ import LinkButton from "~/components/ui/link-button.vue";
           <nav>
             <ul class="flex">
               <li>
-                <LinkButton to="/snippets">
-                  <Icon name="ph:scissors" />
-                </LinkButton>
-              </li>
-              <li>
                 <LinkButton to="/projects">
                   <Icon name="ph:brackets-curly" />
                 </LinkButton>
               </li>
+              <li>
+                <LinkButton to="/snippets">
+                  <Icon name="ph:scissors" />
+                </LinkButton>
+              </li>
+
               <li>
                 <LocaleSelect>
                   <LocaleSelectTrigger />
