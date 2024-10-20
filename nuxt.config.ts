@@ -12,6 +12,13 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/snippets"],
+    },
+  },
+
   modules: [
     "@nuxthub/core",
     "@nuxt/eslint",

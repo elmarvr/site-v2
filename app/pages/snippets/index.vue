@@ -83,7 +83,7 @@ function isEqualDate(a: Date, b: Date, type: "month" | "year") {
             </NuxtLinkLocale>
 
             <p>
-              <Ordinal :value="snippet.date.getDate()" />
+              <Ordinal :value="new Date(snippet.date).getDate()" />
             </p>
           </li>
         </ul>

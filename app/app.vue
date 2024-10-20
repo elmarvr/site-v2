@@ -1,7 +1,6 @@
 <template>
   <NuxtLayout>
     <NuxtRouteAnnouncer />
-    <!-- <NuxtLoadingIndicator color="var(--color-primary)" /> -->
     <NuxtPage />
   </NuxtLayout>
 </template>

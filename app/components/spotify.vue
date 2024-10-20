@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-const { data } = await useFetch("/api/playback-state");
+const { data } = useFetch("/api/playback-state");
 </script>
 
 <template>
-  <div v-if="data" class="p-2 bg-card/20 rounded">
+  <div v-if="!data" class="p-2 bg-card/20 rounded h-[100px]" />
+  <div v-else="data" class="p-2 bg-card/20 rounded">
     <div class="h-14 flex items-center">
       <div class="aspect-square h-full rounded overflow-hidden">
         <a v-if="data.track" :href="data.track.album.externalUrl">
@@ -40,23 +41,26 @@ const { data } = await useFetch("/api/playback-state");
 
         {{ $t("player.listening-now") }}
       </template>
-      <p v-else>
-        {{ $t("player.last-played-at") }}
+      <template v-else>
+        <div class="size-2 bg-muted-foreground rounded-full mr-2" />
+        <p>
+          {{ $t("player.last-played-at") }}
 
-        {{
-          $d(data.timestamp, {
-            day: "numeric",
-            month: "short",
-          })
-        }},
-        {{
-          $d(data.timestamp, {
-            hour: "2-digit",
-            minute: "numeric",
-            timeZoneName: "short",
-          })
-        }}
-      </p>
+          {{
+            $d(data.timestamp, {
+              day: "numeric",
+              month: "short",
+            })
+          }},
+          {{
+            $d(data.timestamp, {
+              hour: "2-digit",
+              minute: "numeric",
+              timeZoneName: "short",
+            })
+          }}
+        </p>
+      </template>
     </div>
   </div>
 </template>
