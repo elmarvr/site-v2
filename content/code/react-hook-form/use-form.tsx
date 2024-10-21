@@ -1,4 +1,3 @@
-/* @jsxRuntime classic */
 import * as React from "react";
 import type { Schema } from "zod";
 import {
@@ -21,8 +20,6 @@ type UseFormReturn<TSchema extends Schema> = __UseFormReturn<
   ) => React.ReactElement;
   
 };
-
-
 
 export function useForm<TSchema extends Schema>({
   schema,

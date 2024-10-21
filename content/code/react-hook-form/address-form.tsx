@@ -1,5 +1,3 @@
-/* @jsxRuntime classic */
-import * as React from "react";
 import { z } from "zod";
 
 import { useForm } from "./use-form";
@@ -12,16 +10,17 @@ const AddressForm = () => {
     }),
   });
 
+//@noErrors
   return (
     <form>
       <form.Field name="street">
         {({ field }) => <input {...field} />}
       </form.Field>
-      <form.Field name="city">   
+      <form.Field name="">   
+//                      ^|
         {({ field }) => <input {...field} />}
       </form.Field>
     </form>
   );
 };
-
 

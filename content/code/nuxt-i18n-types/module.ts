@@ -64,7 +64,7 @@ export default defineNuxtModule({
         const t1 = performance.now();
         logger.success(`I18n types generated in ${Math.round(t1 - t0)}ms`);
     
-        return template;
+        return "template";
       },
     });
   },

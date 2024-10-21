@@ -1,5 +1,5 @@
 import { z } from "zod";
-//---cut---
+
 export const receiptSchema = z.object({
   name: z.string(),
   category: z.string(),

@@ -3,10 +3,10 @@ import { OpenAI } from "openai";
 import { streamSSE } from "hono/streaming";
 import { zodResponseFormat } from "openai/helpers/zod";
 
+import { receiptSchema } from "./schema";
+
 const openai = new OpenAI();
 const app = new Hono();
-//---cut---
-import { receiptSchema } from "./schema";
 
 app.post("/receipts/generate", async (c) => {
   const { store } = await c.req.json();

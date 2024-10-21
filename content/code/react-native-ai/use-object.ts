@@ -4,22 +4,6 @@ import { z, ZodError, type Schema } from "zod";
 import { parse } from "best-effort-json-parser";
 import { hashKey, useQuery, useQueryClient } from "@tanstack/react-query";
 
-function parseEvent(event: MessageEvent) {
-  const data = JSON.parse(event.data ?? "{}");
-
-  return z
-    .object({
-      content: z.string().optional(),
-    })
-    .parse(data);
-}
-
-export type DeepPartial<T> = T extends (infer U)[]
-  ? DeepPartial<U>[]
-  : {
-      [P in keyof T]?: T[P];
-    } & {};
-//---cut---
 const sources = new Map<string, EventSource>();
 
 export function useObject<TOutput extends Schema>(opts: {
@@ -128,3 +112,19 @@ export function useObject<TOutput extends Schema>(opts: {
     isLoading,
   };
 }
+
+function parseEvent(event: MessageEvent) {
+  const data = JSON.parse(event.data ?? "{}");
+
+  return z
+    .object({
+      content: z.string().optional(),
+    })
+    .parse(data);
+}
+
+export type DeepPartial<T> = T extends (infer U)[]
+  ? DeepPartial<U>[]
+  : {
+      [P in keyof T]?: T[P];
+    } & {};

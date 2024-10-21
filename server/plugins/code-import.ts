@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs, { readFileSync } from "fs";
+import { join, extname, basename, dirname } from "path";
 
 export default defineNitroPlugin((nitro) => {
   nitro.hooks.hook("content:file:beforeParse", (file) => {
@@ -10,18 +10,28 @@ export default defineNitroPlugin((nitro) => {
         const line = lines[i]!;
 
         if (line.startsWith("<<<")) {
-          const [_, file, ...meta] = line.split(" ");
+          const [_, path, ...meta] = line.split(" ");
 
-          if (!file) {
+          if (!path) {
             continue;
           }
 
-          const ext = file.split(".").pop();
-          const content = `// @filename: ${path.basename(
-            file
-          )}\n${fs.readFileSync(file, "utf-8")}`;
+          const imports = getImports(path, readFileSync(path, "utf-8"));
+          const ext = extname(path);
 
-          lines[i] = `\`\`\`${ext} ${meta.join(" ")}\n${content}\n\`\`\``;
+          const template = [
+            ...imports,
+            { name: basename(path), content: readFileSync(path, "utf-8") },
+          ]
+            .map(
+              ({ name, content }) =>
+                `// @filename: ${name}\n// ---cut---\n${content}`
+            )
+            .join("\n");
+
+          lines[i] = `\`\`\`${ext.slice(1)} ${meta.join(
+            " "
+          )}\n${template}\n\`\`\``;
         }
       }
 
@@ -31,51 +41,58 @@ export default defineNitroPlugin((nitro) => {
 });
 
 // Currently resolves single-level imports. Future work: handle nested imports.
-function resolveImports(dir: string, content: string) {
+function getImports(path: string, content: string) {
+  const imports: {
+    name: string;
+    content: string;
+  }[] = [];
+
+  const dir = dirname(path);
+
   const lines = content.split("\n");
-  const imports = [] as string[];
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!;
 
     if (line.startsWith("import")) {
-      const file = line.split("from")[1]?.replace(/['";]/g, "").trim();
+      const path = line.split("from")[1]?.replace(/['";]/g, "").trim();
 
-      if (!file) {
+      if (!path) {
         continue;
       }
 
-      if (file.startsWith(".")) {
-        const fullPath = path.join(dir, file);
-        const ext = resolveFileExtension(fullPath);
+      if (path.startsWith(".")) {
+        const fullPath = resolvePath(join(dir, path));
 
-        const content = fs.readFileSync(fullPath + ext, "utf-8");
+        const content = fs.readFileSync(fullPath, "utf-8");
 
-        const name = path.basename(fullPath + ext);
+        const contentImports = getImports(fullPath, content);
 
-        imports.push(
-          `// @filename: ${name}\n${resolveImports(
-            path.dirname(fullPath),
-            content
-          )}`
-        );
+        imports.push(...contentImports);
+
+        const name = basename(fullPath);
+
+        imports.push({
+          name,
+          content,
+        });
       }
     }
   }
 
-  return [...imports, ...lines].join("\n");
+  return imports;
 }
 
-const resolveFileExtension = (file: string) => {
-  if (file.includes(".")) {
-    return "";
+function resolvePath(path: string) {
+  if (fs.existsSync(path)) {
+    return path;
   }
 
   for (const ext of [".ts", ".tsx", ".js", ".jsx"]) {
-    if (fs.existsSync(file + ext)) {
-      return ext;
+    if (fs.existsSync(path + ext)) {
+      return path + ext;
     }
   }
 
-  throw new Error(`Module not found: ${file}`);
-};
+  throw new Error(`Module not found: ${path}`);
+}

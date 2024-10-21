@@ -1,4 +1,3 @@
-/* @jsxRuntime classic */
 import * as React from "react";
 import {
   useController,
@@ -33,11 +32,9 @@ export const FormField = <
     return null;
   }
 
-  const Provider = FieldContext.Provider;
-
   return (
-    <Provider value={fieldProps.fieldState}>
+    <FieldContext.Provider value={fieldProps.fieldState}>
       {children(fieldProps)}
-    </Provider>
+    </FieldContext.Provider>
   );
 };
