@@ -63,7 +63,6 @@
     "tailwindcss-radix": "^3.0.5",
     "ts-dedent": "^2.2.0",
     "typescript": "^5.6.3",
-    "vue-i18n": "^10.0.4",
     "vue-tsc": "^2.1.6",
     "wrangler": "^3.80.4"
   },

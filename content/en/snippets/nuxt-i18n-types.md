@@ -6,8 +6,6 @@ To ensure full type-safety and enhance the development experience with Nuxt modu
 
 :::code-group
 
-<<< ./content/code/nuxt-i18n-types/translated.ts [translated]
-
 <<< ./content/code/nuxt-i18n-types/module.ts [module]
 
 <<< ./content/code/nuxt-i18n-types/generated.ts [generated]
