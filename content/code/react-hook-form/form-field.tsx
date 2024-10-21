@@ -1,4 +1,4 @@
-//@ts-nocheck
+/* @jsxRuntime classic */
 import * as React from "react";
 import {
   useController,
@@ -8,8 +8,9 @@ import {
   type UseControllerReturn,
   type ControllerFieldState,
 } from "react-hook-form";
+
 const FieldContext = React.createContext<ControllerFieldState | null>(null);
-//---cut---
+
 export interface FormFieldProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
@@ -32,9 +33,11 @@ export const FormField = <
     return null;
   }
 
+  const Provider = FieldContext.Provider;
+
   return (
-    <FieldContext.Provider value={fieldProps.fieldState}>
+    <Provider value={fieldProps.fieldState}>
       {children(fieldProps)}
-    </FieldContext.Provider>
+    </Provider>
   );
 };

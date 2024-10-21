@@ -1,3 +1,4 @@
+/* @jsxRuntime classic */
 import * as React from "react";
 import type { Schema } from "zod";
 import {
@@ -7,7 +8,7 @@ import {
   type UseFormReturn as __UseFormReturn,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//---cut---
+
 import { FormField, type FormFieldProps } from "./form-field";
 
 type UseFormReturn<TSchema extends Schema> = __UseFormReturn<
@@ -18,7 +19,10 @@ type UseFormReturn<TSchema extends Schema> = __UseFormReturn<
   Field: <TName extends FieldPath<TSchema["_input"]>>(
     props: FormFieldProps<TSchema["_input"], TName>
   ) => React.ReactElement;
+  
 };
+
+
 
 export function useForm<TSchema extends Schema>({
   schema,

@@ -19,12 +19,9 @@ export default defineNitroPlugin((nitro) => {
           const ext = file.split(".").pop();
           const content = `// @filename: ${path.basename(
             file
-          )}\n// ---cut---\n${fs.readFileSync(file, "utf-8")}`;
+          )}\n${fs.readFileSync(file, "utf-8")}`;
 
-          lines[i] = `\`\`\`${ext} ${meta.join(" ")}\n${resolveImports(
-            path.dirname(file),
-            content
-          )}\n\`\`\``;
+          lines[i] = `\`\`\`${ext} ${meta.join(" ")}\n${content}\n\`\`\``;
         }
       }
 
@@ -74,7 +71,7 @@ const resolveFileExtension = (file: string) => {
     return "";
   }
 
-  for (const ext of [".ts", ".tsx"]) {
+  for (const ext of [".ts", ".tsx", ".js", ".jsx"]) {
     if (fs.existsSync(file + ext)) {
       return ext;
     }

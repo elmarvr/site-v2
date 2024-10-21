@@ -1,14 +1,4 @@
----
-title: React hook form
-summary: Simple snippet showing the difference between Typescript and Javascript
-date: 2024-02-07
----
-
-This is a snippet i use in all my React projects. A wrapper for the react-hook-form useForm hook that takes in a schema to make it type-safe and it returns a FormField component that removes the need for having to add the control prop to the FormField component.
-
-:::code-group
-
-```tsx [use-form.tsx]
+```tsx [./form-field.tsx]
 // @filename: form-field.tsx
 import * as React from "react";
 import {
@@ -31,7 +21,7 @@ export interface FormFieldProps<
   ) => React.ReactNode;
 }
 
-export const FormField = <
+const FormField = <
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
 >({
@@ -52,13 +42,12 @@ export const FormField = <
 };
 
 // @filename: use-form.tsx
-import * as React from "react";
 import type { Schema } from "zod";
 import {
+  type FieldPath,
   useForm as __useForm,
   type UseFormProps,
   type UseFormReturn as __UseFormReturn,
-  type FieldPath,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -74,37 +63,24 @@ type UseFormReturn<TSchema extends Schema> = __UseFormReturn<
   ) => React.ReactElement;
 };
 
-type UseFormOptions<TSchema extends Schema> = Omit<
-  UseFormProps<TSchema["_input"]>,
-  "resolver"
-> & {
+export function useForm<TSchema extends Schema>({
+  schema,
+  ...opts
+}: Omit<UseFormProps<TSchema["_input"]>, "resolver"> & {
   schema: TSchema;
-};
+}): UseFormReturn<TSchema> {
+  const form = __useForm<TSchema["_input"], any, TSchema["_output"]>({
+    ...opts,
+    resolver: zodResolver(schema),
+  }) as any;
 
-export function useForm<TSchema extends Schema>(
-  props: UseFormOptions<TSchema>
-) {
-  return {
-    Field: <TName extends FieldPath<TSchema["_input"]>>(props: { name: TName }) => <div>{props.name}</div>,
-  }
+  form.Field = React.useCallback(
+    (props: FormFieldProps<any, any>) => (
+      <FormField {...props} control={form.control} />
+    ),
+    []
+  );
+
+  return form;
 }
-
-// @filename: index.tsx
-import { z } from "zod";
-import { useForm } from "./use-form";
-
-const AddressForm = () => {
-  const form = useForm({
-    schema: z.object({
-      street: z.string(),
-      city: z.string(),
-    }),
-  });
-
-// @noErrors
-  return <form.Field name="" />;
-//                         ^|
-};
 ```
-
-:::

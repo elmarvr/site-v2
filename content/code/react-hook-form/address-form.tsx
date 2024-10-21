@@ -1,9 +1,7 @@
-//prettier-ignore
-//@ts-nocheck
-//@noErrors
+/* @jsxRuntime classic */
 import * as React from "react";
 import { z } from "zod";
-//---cut---
+
 import { useForm } from "./use-form";
 
 const AddressForm = () => {
@@ -19,10 +17,11 @@ const AddressForm = () => {
       <form.Field name="street">
         {({ field }) => <input {...field} />}
       </form.Field>
-      <form.Field name="">
-        //              ^|
+      <form.Field name="city">   
         {({ field }) => <input {...field} />}
       </form.Field>
     </form>
   );
 };
+
+

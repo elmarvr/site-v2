@@ -87,7 +87,7 @@ export default defineNuxtConfig({
   content: {
     locales: i18n.locales.map(({ code }) => code),
     defaultLocale: i18n.defaultLocale,
-    ignores: ["/code/"],
+    ignores: ["/code/", "/_snippets/"],
     highlight: {
       theme: "one-dark-pro",
     },
