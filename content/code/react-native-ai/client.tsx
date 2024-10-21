@@ -10,8 +10,8 @@ export const Receipt = () => {
     api: "/api/receipt",
     schema: receiptSchema,
     onSuccess: ({ data, error }) => {
-      data?.items;
-      //       ^|
+      data.
+      //  ^|
     },
   });
 
