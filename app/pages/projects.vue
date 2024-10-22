@@ -41,7 +41,7 @@ const { data: projects } = await useAsyncData(async () => {
 </script>
 
 <template>
-  <ul class="space-y-12 pt-8">
+  <ul class="flex flex-col gap-12">
     <li
       v-for="(project, index) in projects"
       :key="project._id"

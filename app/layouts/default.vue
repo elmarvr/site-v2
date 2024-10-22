@@ -39,8 +39,10 @@ useSeoMeta({
     </Head>
 
     <Body>
-      <div class="max-w-2xl mx-auto container px-2">
-        <header class="flex justify-between items-center py-3 sticky top-0">
+      <div class="max-w-2xl mx-auto container px-4">
+        <header
+          class="flex justify-between items-center py-3 sticky top-0 bg-background z-10"
+        >
           <NuxtLinkLocale to="/">
             <h1 class="font-semibold">Elmar</h1>
           </NuxtLinkLocale>
@@ -66,7 +68,9 @@ useSeoMeta({
           </nav>
         </header>
 
-        <slot />
+        <main class="w-full py-4 sm:py-8">
+          <slot />
+        </main>
       </div>
     </Body>
   </Html>

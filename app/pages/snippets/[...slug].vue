@@ -16,7 +16,7 @@ const [prev, next] = await queryContent("snippets")
 </script>
 
 <template>
-  <div class="pt-8">
+  <div>
     <ContentDoc :path="path" :query="{ _locale: locale }" v-slot="{ doc }">
       <div class="pb-3">
         <h2 class="inline-flex text-lg">

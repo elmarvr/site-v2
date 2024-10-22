@@ -61,7 +61,7 @@ function isEqualDate(a: Date, b: Date, type: "month" | "year") {
 </script>
 
 <template>
-  <div class="pt-8">
+  <div>
     <ul class="space-y-4">
       <div v-for="{ date, items, showYear } in snippets">
         <li class="flex justify-between font-semibold">
