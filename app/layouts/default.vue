@@ -39,8 +39,8 @@ useSeoMeta({
     </Head>
 
     <Body>
-      <div class="max-w-2xl mx-auto container">
-        <header class="flex justify-between items-center py-3">
+      <div class="max-w-2xl mx-auto container px-2">
+        <header class="flex justify-between items-center py-3 sticky top-0">
           <NuxtLinkLocale to="/">
             <h1 class="font-semibold">Elmar</h1>
           </NuxtLinkLocale>
