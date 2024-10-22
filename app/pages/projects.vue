@@ -15,35 +15,33 @@ interface Project extends MarkdownParsedContent {
   skills: string[];
 }
 
-const { data: projects } = await useAsyncData(async () => {
-  const list = await queryContent<Project>("projects")
-    .locale(locale.value)
-    .find();
+const projects = await queryContent<Project>("projects")
+  .locale(locale.value)
+  .find();
 
-  return list.map(({ url, github, ...project }) => {
-    const links = [
-      {
-        url: url,
-        title: "Live",
-      },
-      {
-        url: github,
-        title: "Source",
-      },
-    ].filter(({ url }) => url);
+const list = projects.map(({ url, github, ...project }) => {
+  const links = [
+    {
+      url: url,
+      title: "Live",
+    },
+    {
+      url: github,
+      title: "Source",
+    },
+  ].filter(({ url }) => url);
 
-    return {
-      ...project,
-      links,
-    };
-  });
+  return {
+    ...project,
+    links,
+  };
 });
 </script>
 
 <template>
   <ul class="flex flex-col gap-12">
     <li
-      v-for="(project, index) in projects"
+      v-for="(project, index) in list"
       :key="project._id"
       class="flex flex-col items-start gap-3 animate-in fade-in fill-mode-both slide-in-from-bottom-10"
       :style="{ animationDelay: `${100 * index}ms` }"

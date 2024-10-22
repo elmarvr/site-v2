@@ -5,32 +5,26 @@ definePageMeta({
 });
 
 const { locale } = useI18n();
-const { data: introduction } = await useAsyncData(async () => {
-  return queryContent("introduction").locale(locale.value).findOne();
-});
+const introduction = await queryContent("introduction")
+  .locale(locale.value)
+  .findOne();
 
-const { data: recentProjects } = await useAsyncData(async () => {
-  return queryContent("projects")
-    .locale(locale.value)
-    .only(["title", "_path", "url"])
-    .limit(3)
-    .find();
-});
+const recentProjects = await queryContent("projects")
+  .locale(locale.value)
+  .only(["title", "_path", "url"])
+  .limit(3)
+  .find();
 
-const { data: recentSnippets } = await useAsyncData(async () => {
-  return queryContent("snippets")
-    .locale(locale.value)
-    .only(["title", "_path"])
-    .sort({
-      date: -1,
-    })
-    .limit(3)
-    .find();
-});
+const recentSnippets = await queryContent("snippets")
+  .locale(locale.value)
+  .only(["title", "_path"])
+  .sort({
+    date: -1,
+  })
+  .limit(3)
+  .find();
 
-const { data: connect } = await useAsyncData(async () => {
-  return queryContent("connect").locale(locale.value).findOne();
-});
+const connect = await queryContent("connect").locale(locale.value).findOne();
 </script>
 
 <template>

@@ -5,51 +5,48 @@ definePageMeta({
 });
 
 const { locale } = useI18n();
-const { data: snippets } = await useAsyncData("snippets", async () => {
-  const snippets = await queryContent("snippets")
-    .sort({
-      date: -1,
-    })
-    .locale(locale.value)
-    .find();
 
-  const grouped: {
-    date: Date;
-    items: typeof snippets;
-    showYear: boolean;
-  }[] = [];
+const snippets = await queryContent("snippets")
+  .sort({
+    date: -1,
+  })
+  .locale(locale.value)
+  .find();
 
-  for (const snippet of snippets) {
-    const previous = grouped[grouped.length - 1];
+const grouped: {
+  date: Date;
+  items: typeof snippets;
+  showYear: boolean;
+}[] = [];
 
-    snippet.date = new Date(snippet.date);
+for (const snippet of snippets) {
+  const previous = grouped[grouped.length - 1];
 
-    if (!previous) {
-      grouped.push({
-        showYear: true,
-        date: snippet.date,
-        items: [snippet],
-      });
-      continue;
-    }
+  snippet.date = new Date(snippet.date);
 
-    if (!isEqualDate(previous.date, snippet.date, "month")) {
-      const showYear = !isEqualDate(previous.date, snippet.date, "year");
-
-      grouped.push({
-        showYear,
-        date: snippet.date,
-        items: [snippet],
-      });
-
-      continue;
-    }
-
-    previous.items.push(snippet);
+  if (!previous) {
+    grouped.push({
+      showYear: true,
+      date: snippet.date,
+      items: [snippet],
+    });
+    continue;
   }
 
-  return grouped;
-});
+  if (!isEqualDate(previous.date, snippet.date, "month")) {
+    const showYear = !isEqualDate(previous.date, snippet.date, "year");
+
+    grouped.push({
+      showYear,
+      date: snippet.date,
+      items: [snippet],
+    });
+
+    continue;
+  }
+
+  previous.items.push(snippet);
+}
 
 function isEqualDate(a: Date, b: Date, type: "month" | "year") {
   if (type === "month") {
@@ -63,7 +60,7 @@ function isEqualDate(a: Date, b: Date, type: "month" | "year") {
 <template>
   <div>
     <ul class="space-y-4">
-      <div v-for="{ date, items, showYear } in snippets">
+      <div v-for="{ date, items, showYear } in grouped">
         <li class="flex justify-between font-semibold">
           <time>
             {{ $d(date, { month: "long" }) }}

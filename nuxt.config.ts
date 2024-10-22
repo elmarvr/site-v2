@@ -2,11 +2,11 @@ const i18n = {
   locales: [
     {
       code: "en",
-      language: "en-GB",
+      language: "en",
     },
     {
       code: "nl",
-      language: "nl-NL",
+      language: "nl",
     },
   ],
   defaultLocale: "en",
@@ -87,7 +87,7 @@ export default defineNuxtConfig({
   content: {
     locales: i18n.locales.map(({ code }) => code),
     defaultLocale: i18n.defaultLocale,
-    ignores: ["/code/", "/_snippets/"],
+    ignores: ["/code/"],
     highlight: {
       theme: "one-dark-pro",
     },
