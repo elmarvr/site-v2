@@ -16,6 +16,7 @@
   --color-card-foreground: theme(colors.zinc.100);
 
   --color-border: theme(colors.zinc.700);
+  --color-ring: theme(colors.blue.500);
 }
 
 @theme inline {
@@ -35,6 +36,7 @@
   --color-card-foreground: var(--color-card-foreground);
 
   --color-border: var(--color-border);
+  --color-ring: var(--color-ring);
 }
 
 @layer base {

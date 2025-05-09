@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NuxtLinkProps } from "#app";
+import { useForwardProps } from "reka-ui";
 import { buttonVariants, type ButtonVariants } from "./button.vue";
 
 interface Props extends NuxtLinkProps {
@@ -9,12 +10,13 @@ interface Props extends NuxtLinkProps {
 }
 
 const props = defineProps<Props>();
-const linkProps = reactiveOmit(props, ["variant", "size", "class"]);
+const delegated = reactiveOmit(props, ["variant", "size", "class"]);
+const forwarded = useForwardProps(delegated);
 </script>
 
 <template>
   <NuxtLinkLocale
-    v-bind="linkProps"
+    v-bind="forwarded"
     :class="
       buttonVariants({
         variant,

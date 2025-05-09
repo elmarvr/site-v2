@@ -78,16 +78,16 @@ function isEqualDate(a: Date, b: Date, type: "month" | "year") {
             v-for="snippet in items"
             class="flex justify-between py-3 items-center text-zinc-300"
           >
-            <NuxtLinkLocale
+            <NuxtLink
               name="snippet-title"
               class="hover:underline underline-offset-2"
               :to="`${snippet.path}`"
             >
               {{ snippet.title }}
-            </NuxtLinkLocale>
+            </NuxtLink>
 
             <p>
-              <!-- <Ordinal :value="new Date(snippet.date).getDate()" /> -->
+              <I18nOrdinal :value="new Date(snippet.date).getDate()" />
             </p>
           </li>
         </ul>

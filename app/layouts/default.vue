@@ -5,29 +5,29 @@
         <header
           class="flex justify-between items-center py-3 sticky top-0 bg-background z-10"
         >
-          <NuxtLinkLocale to="/">
-            <h1 class="font-semibold">Elmar</h1>
+          <NuxtLinkLocale to="/" :class="focusRing({ class: 'font-semibold' })">
+            Elmar
           </NuxtLinkLocale>
-          <!-- <nav>
+          <nav>
             <ul class="flex">
               <li>
-                <UiLinkButton to="/projects">
+                <UiLinkButton to="/projects" active-class="!text-primary">
                   <Icon name="ph:brackets-curly" />
                 </UiLinkButton>
               </li>
               <li>
-                <UiLinkButton to="/snippets">
+                <UiLinkButton to="/snippets" active-class="!text-primary">
                   <Icon name="ph:scissors" />
                 </UiLinkButton>
               </li>
 
               <li>
-                <LocaleSelect>
-                  <LocaleSelectTrigger />
-                </LocaleSelect>
+                <I18nLocaleSelect>
+                  <I18nLocaleSelectTrigger />
+                </I18nLocaleSelect>
               </li>
             </ul>
-          </nav> -->
+          </nav>
         </header>
 
         <main class="w-full py-4 sm:py-8">

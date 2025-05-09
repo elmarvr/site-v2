@@ -12,7 +12,11 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
   ],
   devtools: { enabled: true },
-  runtimeConfig: {},
+  runtimeConfig: {
+    spotifyRefreshToken: "",
+    spotifyClientId: "",
+    spotifyClientSecret: "",
+  },
   future: { compatibilityVersion: 4 },
   compatibilityDate: "2025-03-01",
   css: ["~/assets/css/main.css"],
@@ -25,10 +29,21 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
   },
-
-  hub: {},
+  build: {
+    transpile: ["@ekwoka/spotify-api"],
+  },
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+  hub: {
+    kv: true,
+  },
   i18n: {
-    locales: ["en", "nl"],
+    locales: [
+      { code: "en", language: "English", file: "en.json" },
+      { code: "nl", language: "Nederlands", file: "nl.json" },
+    ],
+    langDir: "../app/lang",
     defaultLocale: "en",
     strategy: "prefix",
   },

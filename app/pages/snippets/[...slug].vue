@@ -24,7 +24,7 @@ const { data: snippet } = await useAsyncData(route.path, () => {
 
     <LazyContentRenderer
       :value="snippet"
-      class="prose prose-zinc prose-invert"
+      class="prose prose-zinc prose-invert max-w-none"
     />
   </div>
 </template>

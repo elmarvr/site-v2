@@ -20,7 +20,7 @@ const { data: snippets } = await useAsyncData(
 </script>
 
 <template>
-  <div class="grid grid-cols-2 not-prose py-12">
+  <div class="grid grid-cols-2 not-prose my-12">
     <div>
       <h2 class="pb-4 text-muted-foreground">
         {{ $t("projects.recent") }}
@@ -30,7 +30,7 @@ const { data: snippets } = await useAsyncData(
           <a
             v-if="project.url"
             :href="project.url"
-            class="flex items-center gap-2 hover:underline"
+            class="inline-flex items-center gap-2 hover:underline"
           >
             {{ project.title }}
             <Icon
@@ -46,14 +46,14 @@ const { data: snippets } = await useAsyncData(
     </div>
 
     <div>
-      <h2 class="pb-5 text-muted-foreground">
+      <h2 class="pb-4 text-muted-foreground">
         {{ $t("snippets.recent") }}
       </h2>
       <ul class="space-y-3">
         <li v-for="snippet in snippets" :key="snippet.id">
-          <NuxtLinkLocale :to="snippet.path" class="hover:underline">
+          <NuxtLink :to="snippet.path" class="hover:underline">
             {{ snippet.title }}
-          </NuxtLinkLocale>
+          </NuxtLink>
         </li>
       </ul>
     </div>

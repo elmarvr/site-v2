@@ -32,7 +32,10 @@ defineProps<{
         </div> -->
     </div>
 
-    <ContentRenderer :value="project" class="prose prose-zinc prose-invert" />
+    <ContentRenderer
+      :value="project"
+      class="prose prose-zinc prose-invert max-w-none"
+    />
 
     <ul class="flex flex-wrap gap-2">
       <li

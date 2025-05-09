@@ -7,7 +7,7 @@ export default defineContentConfig({
       source: {
         include: "en/**/*.md",
         prefix: "/en",
-        exclude: ["en/projects/*.md"],
+        exclude: ["en/projects/*.md", "en/snippets/*.md"],
       },
       schema: contentSchema(),
     }),
@@ -16,7 +16,7 @@ export default defineContentConfig({
       source: {
         include: "nl/**/*.md",
         prefix: "/nl",
-        exclude: ["nl/projects/*.md"],
+        exclude: ["nl/projects/*.md", "nl/snippets/*.md"],
       },
       schema: contentSchema(),
     }),
