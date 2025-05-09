@@ -66,7 +66,9 @@ function contentSchema() {
 function projectSchema() {
   return z.object({
     title: z.string(),
+    date: z.date(),
     body: z.any(),
+    url: z.string().url(),
     stack: z.string().array(),
   });
 }

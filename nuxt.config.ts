@@ -55,5 +55,8 @@ export default defineNuxtConfig({
         },
       },
     },
+    renderer: {
+      anchorLinks: false,
+    },
   },
 });

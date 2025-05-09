@@ -27,7 +27,7 @@ export default defineNuxtModule((opts, nuxt) => {
 
       const ext = path.extname(filepath);
 
-      return `\`\`\`${ext.slice(1)} [${name}]\n${content}\`\`\`\n`;
+      return `\`\`\`${ext.slice(1)} [${name}]\n${content}\`\`\`\n\n`;
     });
   });
 });
