@@ -1,3 +1,4 @@
+// @lib: esnext,dom
 // @noErrors
 import type { Schema } from "hono";
 import type { ClientRequest } from "hono/client";

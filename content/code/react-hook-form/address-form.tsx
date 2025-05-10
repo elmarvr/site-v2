@@ -1,3 +1,4 @@
+//@lib: esnext,dom
 import { z } from "zod";
 
 import { useForm } from "./use-form";
@@ -10,17 +11,14 @@ const AddressForm = () => {
     }),
   });
 
-//@noErrors
+  //@noErrors
   return (
     <form>
       <form.Field name="street">
         {({ field }) => <input {...field} />}
       </form.Field>
-      <form.Field name="">   
-//                      ^|
-        {({ field }) => <input {...field} />}
-      </form.Field>
+
+      {/* <form.Field name="">{({ field }) => <input {...field} />}</form.Field> */}
     </form>
   );
 };
-

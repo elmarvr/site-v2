@@ -1,3 +1,4 @@
+// @lib: esnext,dom
 import * as React from "react";
 import EventSource, { type MessageEvent } from "react-native-sse";
 import { z, ZodError, type Schema } from "zod";

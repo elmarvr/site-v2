@@ -1,7 +1,9 @@
+//@lib: esnext,dom
+
 declare module "@nuxt/schema" {
   interface NuxtOptions {
     i18n?: {
-      locales?: string[] | { code: string }[]
+      locales?: string[] | { code: string }[];
       langDir?: string;
     };
   }
@@ -44,12 +46,12 @@ export default defineNuxtModule({
           const code = typeof locale === "string" ? locale : locale.code;
           const file = resolver.resolve(`../app/${langDir}/${code}.json`);
           const content = readFileSync(file, "utf-8");
-    
+
           return JSON.parse(content);
         });
-    
+
         const ids = intersection(messages.map(Object.keys));
-    
+
         const template = dedent`
           import { DefineLocaleMessage } from "vue-i18n";
           declare module 'vue-i18n' {
@@ -60,11 +62,11 @@ export default defineNuxtModule({
               ${ids.map((id) => `"${id}": string`).join("\n")}
             }
           }`;
-    
+
         const t1 = performance.now();
         logger.success(`I18n types generated in ${Math.round(t1 - t0)}ms`);
-    
-        return "template";
+
+        return template;
       },
     });
   },

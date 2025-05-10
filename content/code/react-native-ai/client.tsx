@@ -1,3 +1,4 @@
+// @lib: esnext,dom
 import { receiptSchema } from "./schema";
 import { useObject } from "./use-object";
 

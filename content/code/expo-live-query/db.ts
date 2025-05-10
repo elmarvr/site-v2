@@ -1,6 +1,7 @@
+//@lib: esnext,dom
 import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
 import { drizzle } from "drizzle-orm/expo-sqlite";
-import { openDatabaseSync } from "expo-sqlite/next";
+import { openDatabaseSync } from "expo-sqlite";
 //---cut---
 const expo = openDatabaseSync("cool-message-app.db", {
   enableChangeListener: true,

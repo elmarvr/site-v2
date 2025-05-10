@@ -1,3 +1,4 @@
+//@lib: esnext,dom
 import { is, SQL, Subquery } from "drizzle-orm";
 import {
   getTableConfig,
@@ -8,7 +9,7 @@ import {
 } from "drizzle-orm/sqlite-core";
 import { SQLiteRelationalQuery } from "drizzle-orm/sqlite-core/query-builders/query";
 
-import { addDatabaseChangeListener } from "expo-sqlite/next";
+import { addDatabaseChangeListener } from "expo-sqlite";
 import * as React from "react";
 
 import {

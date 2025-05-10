@@ -1,3 +1,4 @@
+//@lib: esnext,dom
 import * as React from "react";
 import type { Schema } from "zod";
 import {
@@ -18,7 +19,6 @@ type UseFormReturn<TSchema extends Schema> = __UseFormReturn<
   Field: <TName extends FieldPath<TSchema["_input"]>>(
     props: FormFieldProps<TSchema["_input"], TName>
   ) => React.ReactElement;
-  
 };
 
 export function useForm<TSchema extends Schema>({

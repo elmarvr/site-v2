@@ -1,7 +1,7 @@
 import { useLiveQuery } from "./use-live-query";
 import { db } from "./db";
 
-const MesageList = () => {
+const MessageList = () => {
   const { data, error } = useLiveQuery({
     query: db.query.messages.findMany(),
     queryKey: ["messages"],

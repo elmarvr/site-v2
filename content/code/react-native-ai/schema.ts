@@ -1,3 +1,4 @@
+// @lib: esnext,dom
 import { z } from "zod";
 
 export const receiptSchema = z.object({

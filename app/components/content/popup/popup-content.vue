@@ -35,10 +35,10 @@ const ctx = inject(PopupContext)!;
 }
 
 .twoslash-popup-code pre {
-  @apply !p-2;
+  padding: calc(var(--spacing) * 2);
 }
 
 .twoslash-popup-code .group {
-  @apply !max-w-xl;
+  max-width: var(--breakpoint-2xl);
 }
 </style>

@@ -1,3 +1,4 @@
+// @lib: esnext,dom
 import { Hono } from "hono";
 import { OpenAI } from "openai";
 import { streamSSE } from "hono/streaming";

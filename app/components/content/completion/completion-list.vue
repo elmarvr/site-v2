@@ -9,17 +9,22 @@
 
 <style>
 & li {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 }
 
 html .shiki .twoslash-completions-icon {
-  @apply mr-2 size-4 text-muted-foreground block;
+  margin-right: calc(var(--spacing) * 2);
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  color: var(--color-muted-foreground);
+  display: block;
 }
 
 & .twoslash-completions-matched {
-  @apply !text-foreground;
+  color: var(--color-foreground) !important;
 }
 & .twoslash-completions-unmatched {
-  @apply !text-muted-foreground;
+  color: var(--color-muted-foreground) !important;
 }
 </style>
