@@ -25,6 +25,7 @@ const formattedDate = computed(() => {
       <UiSkeleton class="size-14" v-if="!data" />
       <a v-else class="size-14 flex rounded overflow-hidden">
         <NuxtImg
+          class="size-full"
           :src="data.track?.album?.imageUrl"
           :alt="data.track?.album?.name"
         />
