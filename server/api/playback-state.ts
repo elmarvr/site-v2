@@ -62,7 +62,7 @@ function normalizeTrack(track: Track) {
     })),
     album: {
       name: track.album.name,
-      imageUrl: track.album.images[0].url,
+      imageUrl: track.album.images[0]?.url,
       externalUrl: track.album.external_urls.spotify,
     },
   };

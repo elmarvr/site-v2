@@ -79,4 +79,11 @@ export default defineNuxtConfig({
       anchorLinks: false,
     },
   },
+  image: {
+    domains: ["i.scdn.co"],
+    provider: "cloudflare",
+    cloudflare: {
+      baseURL: "https://elmarvr.com",
+    },
+  },
 });
