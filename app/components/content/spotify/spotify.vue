@@ -20,12 +20,11 @@ const formattedDate = computed(() => {
 </script>
 
 <template>
-  <div class="p-2 bg-card/20 rounded">
+  <div class="p-2 bg-card/20 rounded not-prose">
     <div class="flex gap-4">
       <UiSkeleton class="size-14" v-if="!data" />
       <a v-else class="size-14 flex rounded overflow-hidden">
         <NuxtImg
-          class="size-full"
           :src="data.track?.album?.imageUrl"
           :alt="data.track?.album?.name"
         />
