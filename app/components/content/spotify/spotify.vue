@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const { data } = await useLazyFetch("/api/playback-state");
+const { data } = await useLazyFetch("/api/playback-state", {
+  server: false,
+});
 
 const { d } = useI18n();
 

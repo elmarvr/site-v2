@@ -10,6 +10,7 @@ import {
 
 export default eventHandler(async (event) => {
   const token = await getAccessToken(event);
+
   const client = spotifyApiClient(token);
 
   const result = await client(currentlyPlayingTrack());
