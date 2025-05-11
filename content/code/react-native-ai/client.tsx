@@ -1,4 +1,5 @@
 // @ts-nocheck
+// ---cut---
 import { receiptSchema } from "./schema";
 import { useObject } from "./use-object";
 

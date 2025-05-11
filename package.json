@@ -8,8 +8,7 @@
     "generate": "nuxt generate",
     "preview": "npx nuxthub preview",
     "deploy": "npx nuxthub deploy",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint ."
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@ekwoka/spotify-api": "^0.16.1",

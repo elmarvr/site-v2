@@ -69,6 +69,7 @@ function projectSchema() {
     date: z.date(),
     body: z.any(),
     url: z.string().url(),
+    github: z.string().url(),
     stack: z.string().array(),
   });
 }

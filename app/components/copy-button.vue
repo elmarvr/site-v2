@@ -12,9 +12,9 @@ const { copy, copied } = useClipboard({ source });
     type="button"
     @click="copy()"
     :disabled="copied"
+    :aria-label="$t('general.copy')"
   >
     <Icon v-if="!copied" name="ph:copy" />
-
     <Icon v-else name="ph:check" />
   </UiButton>
 </template>
