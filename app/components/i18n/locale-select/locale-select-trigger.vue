@@ -1,6 +1,6 @@
 <template>
   <UiSelectTrigger as-child>
-    <UiButton>
+    <UiButton :aria-label="$t('nav.language')">
       <Icon name="ph:globe" class="size-4" />
     </UiButton>
   </UiSelectTrigger>

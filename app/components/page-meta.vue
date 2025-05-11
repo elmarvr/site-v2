@@ -6,9 +6,14 @@ const props = defineProps<{
   };
 }>();
 
+const { locale } = useI18n();
+
 useHead({
   title: props.item.title,
   titleTemplate: `%s | elmarvr`,
+  htmlAttrs: {
+    lang: locale.value,
+  },
   meta: [
     {
       name: "description",

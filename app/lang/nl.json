@@ -1,7 +1,7 @@
 {
-  "nav.projects": "Projecten",
-  "nav.snippets": "Snippets",
-  "nav.language": "Taal",
+  "nav.work": "Werk",
+  "nav.code": "Code",
+  "nav.language": "Selecteer Taal",
   "projects.recent": "Recente projecten",
   "projects.all": "Alle projecten",
   "snippets.recent": "Recente snippets",
@@ -13,11 +13,5 @@
   "ordinal.few": "de",
   "ordinal.other": "de",
   "player.listening-now": "Luistert nu",
-  "player.last-played-at": "Laatst afgespeeld op",
-  "page.index.title": "Home",
-  "page.index.description": "Elmar's persoonlijke site",
-  "page.snippets.title": "Snippets",
-  "page.snippets.description": "Elmar's code snippets",
-  "page.projects.title": "Projecten",
-  "page.projects.description": "Elmar's projecten"
+  "player.last-played-at": "Laatst afgespeeld op"
 }

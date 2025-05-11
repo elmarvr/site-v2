@@ -1,7 +1,7 @@
 {
-  "nav.projects": "Projects",
-  "nav.snippets": "Snippets",
-  "nav.language": "Language",
+  "nav.work": "Work",
+  "nav.code": "Code",
+  "nav.language": "Select Language",
   "projects.recent": "Recent projects",
   "projects.all": "All projects",
   "snippets.recent": "Recent snippets",
@@ -13,11 +13,5 @@
   "ordinal.few": "rd",
   "ordinal.other": "th",
   "player.listening-now": "Listening now",
-  "player.last-played-at": "Last played at",
-  "page.index.title": "Home",
-  "page.index.description": "Elmar's personal site",
-  "page.snippets.title": "Snippets",
-  "page.snippets.description": "Elmar's code snippets",
-  "page.projects.title": "Projects",
-  "page.projects.description": "Elmar's projects"
+  "player.last-played-at": "Last played at"
 }

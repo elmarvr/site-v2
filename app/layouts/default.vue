@@ -11,12 +11,20 @@
           <nav>
             <ul class="flex">
               <li>
-                <UiLinkButton to="/work" active-class="!text-primary">
+                <UiLinkButton
+                  to="/work"
+                  active-class="!text-primary"
+                  :aria-label="$t('nav.work')"
+                >
                   <Icon name="ph:brackets-curly" />
                 </UiLinkButton>
               </li>
               <li>
-                <UiLinkButton to="/code" active-class="!text-primary">
+                <UiLinkButton
+                  to="/code"
+                  active-class="!text-primary"
+                  :aria-label="$t('nav.code')"
+                >
                   <Icon name="ph:scissors" />
                 </UiLinkButton>
               </li>
