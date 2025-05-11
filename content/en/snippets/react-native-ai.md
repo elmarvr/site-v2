@@ -1,5 +1,6 @@
 ---
 title: Expo, AI Structured Output
+description: A typesafe way to handle streamed structured output in Expo using Hono RPC client
 date: 2024-08-27
 ---
 

@@ -10,7 +10,7 @@ const collection = computed(() => {
   return `snippets_${locale.value}` as const;
 });
 
-const { data: snippet } = await useAsyncData(route.path, () => {
+const { data: page } = await useAsyncData(route.path, () => {
   return queryCollection(collection.value).path(route.path).first();
 });
 
@@ -25,18 +25,19 @@ const { data: surrounding } = await useAsyncData(
 </script>
 
 <template>
-  <div v-if="snippet">
+  <div v-if="page">
+    <PageMeta :item="page" />
     <div class="pb-3">
       <h2 class="inline-flex text-lg">
-        {{ snippet.title }}
+        {{ page.title }}
       </h2>
       <p class="text-muted-foreground">
-        {{ $d(snippet.date, { dateStyle: "medium" }) }}
+        {{ $d(page.date, { dateStyle: "medium" }) }}
       </p>
     </div>
 
     <ContentRenderer
-      :value="snippet"
+      :value="page"
       class="prose prose-zinc prose-invert max-w-none"
     />
 

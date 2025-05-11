@@ -1,5 +1,6 @@
 ---
 title: Upload files with Expo and Hono
+description: A typesafe way to upload files in Expo using Hono RPC client
 date: 2024-07-20
 ---
 

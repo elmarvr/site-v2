@@ -11,12 +11,12 @@
           <nav>
             <ul class="flex">
               <li>
-                <UiLinkButton to="/projects" active-class="!text-primary">
+                <UiLinkButton to="/work" active-class="!text-primary">
                   <Icon name="ph:brackets-curly" />
                 </UiLinkButton>
               </li>
               <li>
-                <UiLinkButton to="/snippets" active-class="!text-primary">
+                <UiLinkButton to="/code" active-class="!text-primary">
                   <Icon name="ph:scissors" />
                 </UiLinkButton>
               </li>

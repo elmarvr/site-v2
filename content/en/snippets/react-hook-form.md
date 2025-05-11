@@ -1,6 +1,6 @@
 ---
 title: React hook form
-summary: Simple snippet showing the difference between Typescript and Javascript
+description: Simple snippet showing the difference between Typescript and Javascript
 date: 2024-02-07
 ---
 

@@ -63,38 +63,36 @@ function isEqualDate(a: Date, b: Date, type: "month" | "year") {
 </script>
 
 <template>
-  <div>
-    <ul class="space-y-4">
-      <div v-for="{ date, items, showYear } in grouped">
-        <li class="flex justify-between font-semibold">
-          <time>
-            {{ $d(date, { month: "long" }) }}
-          </time>
+  <ul class="space-y-4 not-prose">
+    <div v-for="{ date, items, showYear } in grouped">
+      <li class="flex justify-between font-semibold">
+        <time>
+          {{ $d(date, { month: "long" }) }}
+        </time>
 
-          <time v-if="showYear">
-            {{ $d(date, { year: "numeric" }) }}
-          </time>
-        </li>
+        <time v-if="showYear">
+          {{ $d(date, { year: "numeric" }) }}
+        </time>
+      </li>
 
-        <ul class="divide-y divide-border divide-dashed">
-          <li
-            v-for="snippet in items"
-            class="flex justify-between py-3 items-center text-zinc-300"
+      <ul class="divide-y divide-border divide-dashed">
+        <li
+          v-for="snippet in items"
+          class="flex justify-between py-3 items-center text-zinc-300"
+        >
+          <NuxtLink
+            name="snippet-title"
+            class="hover:underline underline-offset-2"
+            :to="`${snippet.path}`"
           >
-            <NuxtLink
-              name="snippet-title"
-              class="hover:underline underline-offset-2"
-              :to="`${snippet.path}`"
-            >
-              {{ snippet.title }}
-            </NuxtLink>
+            {{ snippet.title }}
+          </NuxtLink>
 
-            <p>
-              <I18nOrdinal :value="new Date(snippet.date).getDate()" />
-            </p>
-          </li>
-        </ul>
-      </div>
-    </ul>
-  </div>
+          <p>
+            <I18nOrdinal :value="new Date(snippet.date).getDate()" />
+          </p>
+        </li>
+      </ul>
+    </div>
+  </ul>
 </template>

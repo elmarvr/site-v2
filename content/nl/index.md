@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 **Hoi ik ben Elmar! 👋**
 
 Gepassioneerd over het creëren van de beste ervaring met de strakste designs. Misschien een beetje te geobsedeerd met het type-safe maken van software 🧙‍♂️.

@@ -1,5 +1,6 @@
 ---
 title: Expo Live Query
+description: A custom hook for real-time updates in Expo SQLite
 date: 2024-08-12
 ---
 
