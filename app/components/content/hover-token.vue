@@ -6,6 +6,7 @@
 
 <style>
 .group span.hover-token {
+  text-decoration-line: underline;
   text-decoration-style: dotted;
   text-decoration-color: var(--color-card);
   text-decoration-thickness: 2px;

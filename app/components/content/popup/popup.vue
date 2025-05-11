@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const isOpen = ref(false);
 
-let timeout: NodeJS.Timeout | null = null;
+let timeout: number | null = null;
 
 function onOpenChange(e: PointerEvent, value: boolean) {
   if (e.pointerType === "touch") return;

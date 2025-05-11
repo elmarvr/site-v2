@@ -8,9 +8,7 @@ UploadAsync is een functie om files type-safe te uploaden in Expo met behulp van
 :::code-group
 
 <<< ./content/code/hono-expo-upload-async/client.ts [client]
-
 <<< ./content/code/hono-expo-upload-async/server.ts [server]
-
 <<< ./content/code/hono-expo-upload-async/upload-async.ts [upload-async]
 
 :::

@@ -1,4 +1,3 @@
-// @lib: esnext,dom
 // @ts-nocheck
 // @noErrors
 import { hc } from "hono/client";

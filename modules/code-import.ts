@@ -1,6 +1,8 @@
-import fs, { readFileSync } from "fs";
 import { defineNuxtModule } from "nuxt/kit";
-import { join, extname, basename, dirname } from "path";
+import { createResolver } from "@nuxt/kit";
+import path from "path";
+import fs from "fs";
+import { parseModule } from "magicast";
 
 export default defineNuxtModule({
   meta: {
@@ -8,97 +10,100 @@ export default defineNuxtModule({
   },
   setup: (opts, nuxt) => {
     nuxt.hooks.hook("content:file:beforeParse", ({ file }) => {
-      if (file.id.endsWith(".md")) {
-        const lines = file.body.split("\n");
+      const lines = file.body.split("\n");
 
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i]!;
+      for (let i = 0; i <= lines.length - 1; i++) {
+        const line = lines[i]!;
 
-          if (line.startsWith("<<<")) {
-            const [_, path, ...meta] = line.split(" ");
-
-            if (!path) {
-              continue;
-            }
-
-            const imports = getImports(path, readFileSync(path, "utf-8"));
-            const ext = extname(path);
-
-            const template = [
-              ...imports,
-              { name: basename(path), content: readFileSync(path, "utf-8") },
-            ]
-              .map(
-                ({ name, content }) =>
-                  `// @filename: ${name}\n// ---cut---\n${content}`
-              )
-              .join("\n");
-
-            lines[i] = `\`\`\`${ext.slice(1)} ${meta.join(
-              " "
-            )}\n${template}\n\`\`\``;
-          }
+        if (!line.startsWith("<<<")) {
+          continue;
         }
 
-        file.body = lines.join("\n");
+        const [_, filepath, ...meta] = line.split(" ");
+
+        if (!filepath) {
+          continue;
+        }
+
+        const modules = getModules(resolve("../", filepath));
+
+        const last = modules[modules.length - 1]!;
+        last.content = addComment(last.content, ` ---cut---`, 1);
+
+        let content = modules.map((module) => module.content).join("\n\n");
+        content = addComment(content, ` @lib: esnext,dom`);
+
+        lines[i] = generateTemplate({
+          path: filepath,
+          meta,
+          body: content,
+        });
       }
+
+      file.body = lines.join("\n");
     });
   },
 });
 
-// Currently resolves single-level imports. Future work: handle nested imports.
-function getImports(path: string, content: string) {
-  const imports: {
-    name: string;
+function generateTemplate(file: {
+  path: string;
+  meta: string[];
+  body: string;
+}) {
+  return [
+    `\`\`\`${path.extname(file.path).slice(1)} ${file.meta.join(" ")}`,
+    file.body,
+    `\`\`\``,
+  ].join("\n");
+}
+
+function getModules(filepath: string) {
+  const modules: {
+    path: string;
     content: string;
   }[] = [];
 
-  const dir = dirname(path);
+  let content = fs.readFileSync(filepath, "utf-8");
+  content = addComment(content, ` @filename: ${path.basename(filepath)}`);
 
-  const lines = content.split("\n");
+  modules.push({
+    path: filepath,
+    content,
+  });
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]!;
-
-    if (line.startsWith("import")) {
-      const path = line.split("from")[1]?.replace(/['";]/g, "").trim();
-
-      if (!path) {
-        continue;
-      }
-
-      if (path.startsWith(".")) {
-        const fullPath = resolvePath(join(dir, path));
-
-        const content = fs.readFileSync(fullPath, "utf-8");
-
-        const contentImports = getImports(fullPath, content);
-
-        imports.push(...contentImports);
-
-        const name = basename(fullPath);
-
-        imports.push({
-          name,
-          content,
-        });
-      }
+  const mod = parseModule(content);
+  for (const $import of mod.imports.$items) {
+    if ($import.from.startsWith(".")) {
+      const _path = resolve(path.dirname(filepath), $import.from);
+      modules.unshift(...getModules(_path));
     }
   }
 
-  return imports;
+  return modules;
 }
 
-function resolvePath(path: string) {
-  if (fs.existsSync(path)) {
-    return path;
-  }
+function addComment(file: string, code: string, line = 0) {
+  const lines = file.split("\n");
+  lines.splice(line, 0, `//${code}`);
+  return lines.join("\n");
+}
 
-  for (const ext of [".ts", ".tsx", ".js", ".jsx"]) {
-    if (fs.existsSync(path + ext)) {
-      return path + ext;
+function resolve(...paths: string[]) {
+  const extensions = ["ts", "tsx"];
+  const resolver = createResolver(import.meta.url);
+
+  const filepath = resolver.resolve(...paths);
+
+  for (const ext of extensions) {
+    try {
+      const result = `${filepath}.${ext}`;
+      if (fs.existsSync(result)) {
+        return result;
+      }
+    } catch (e) {
+      continue;
     }
   }
 
-  throw new Error(`Module not found: ${path}`);
+  return filepath;
 }

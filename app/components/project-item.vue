@@ -3,12 +3,17 @@ import type { ProjectsEnCollectionItem } from "@nuxt/content";
 
 defineProps<{
   project: ProjectsEnCollectionItem;
+  index: number;
 }>();
 </script>
 
 <template>
-  <li :key="project.id" class="flex flex-col items-start gap-3">
-    <div class="flex items-center">
+  <li
+    :key="project.id"
+    class="flex flex-col items-start gap-3 animate-in fade-in fill-mode-both slide-in-from-bottom-10"
+    :style="{ animationDelay: `${100 * index}ms` }"
+  >
+    <div class="flex">
       <h2 class="font-semibold">{{ project.title }}</h2>
 
       <!-- <div

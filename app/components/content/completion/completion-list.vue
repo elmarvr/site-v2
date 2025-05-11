@@ -1,14 +1,14 @@
 <template>
   <PopupContent
     :side-offset="0"
-    class="z-10 flex flex-col list-none min-w-32 py-1 text-foreground"
+    class="z-10 flex flex-col list-none min-w-32 py-1 text-foreground completion-list"
   >
     <slot />
   </PopupContent>
 </template>
 
 <style>
-& li {
+.completion-list li {
   display: flex;
   align-items: center;
 }
@@ -21,10 +21,10 @@ html .shiki .twoslash-completions-icon {
   display: block;
 }
 
-& .twoslash-completions-matched {
+.completion-list .twoslash-completions-matched {
   color: var(--color-foreground) !important;
 }
-& .twoslash-completions-unmatched {
+.completion-list .twoslash-completions-unmatched {
   color: var(--color-muted-foreground) !important;
 }
 </style>

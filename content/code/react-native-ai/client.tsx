@@ -1,4 +1,4 @@
-// @lib: esnext,dom
+// @ts-nocheck
 import { receiptSchema } from "./schema";
 import { useObject } from "./use-object";
 
@@ -8,10 +8,10 @@ export const Receipt = () => {
     api: "/api/receipt",
     schema: receiptSchema,
     onSuccess: ({ data, error }) => {
-        data.
-//           ^|
+      data.i;
+      //    ^|
     },
   });
 
-//...
+  //...
 };

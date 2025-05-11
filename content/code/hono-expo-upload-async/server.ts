@@ -1,4 +1,3 @@
-// @lib: esnext,dom
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";

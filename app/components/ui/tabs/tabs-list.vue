@@ -7,6 +7,7 @@ interface Props extends TabsListProps {
 
 const props = defineProps<Props>();
 const listProps = reactiveOmit(props, ["class"]);
+const isMounted = useMounted();
 </script>
 
 <template>
@@ -16,6 +17,7 @@ const listProps = reactiveOmit(props, ["class"]);
   >
     <slot />
     <RekaTabsIndicator
+      v-if="isMounted"
       class="absolute z-10 rounded -bottom-0.5 transition-all left-(--reka-tabs-indicator-position) w-(--reka-tabs-indicator-size) h-0.5 bg-primary"
     />
   </RekaTabsList>

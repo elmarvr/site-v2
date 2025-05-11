@@ -1,4 +1,3 @@
-// @lib: esnext,dom
 import * as React from "react";
 import EventSource, { type MessageEvent } from "react-native-sse";
 import { z, ZodError, type Schema } from "zod";
@@ -53,18 +52,6 @@ export function useObject<TOutput extends Schema>(opts: {
       if (event.data === "[DONE]") {
         if (opts.onSuccess) {
           const result = opts.schema.safeParse(lastObject);
-
-          opts.onSuccess(
-            result.success
-              ? {
-                  data: result.data,
-                  error: undefined,
-                }
-              : {
-                  data: undefined,
-                  error: result.error,
-                }
-          );
         }
 
         setIsLoading(false);
@@ -117,11 +104,7 @@ export function useObject<TOutput extends Schema>(opts: {
 function parseEvent(event: MessageEvent) {
   const data = JSON.parse(event.data ?? "{}");
 
-  return z
-    .object({
-      content: z.string().optional(),
-    })
-    .parse(data);
+  return z.object({ content: z.string().optional() }).parse(data);
 }
 
 export type DeepPartial<T> = T extends (infer U)[]

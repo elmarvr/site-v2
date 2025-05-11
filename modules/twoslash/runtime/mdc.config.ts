@@ -12,7 +12,7 @@ export default defineConfig({
     transformers: async () => {
       return [
         await import("./transformer").then(({ createTransformer }) =>
-          createTransformer({ throws: true })
+          createTransformer({ throws: false })
         ),
       ];
     },

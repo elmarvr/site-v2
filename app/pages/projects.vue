@@ -13,8 +13,9 @@ const { data: projects } = await useAsyncData(collection.value, () => {
 <template>
   <ul class="flex flex-col gap-12">
     <ProjectItem
-      v-for="project in projects"
+      v-for="(project, index) in projects"
       :key="project.id"
+      :index="index"
       :project="project"
     />
   </ul>

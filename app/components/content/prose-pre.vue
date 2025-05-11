@@ -13,7 +13,7 @@ const visibleCode = computed(
 </script>
 
 <template>
-  <UiScrollArea class="not-prose relative flex group max-h-[560px]">
+  <UiScrollArea class="not-prose relative flex group max-h-[480px]">
     <CopyButton
       v-if="visibleCode"
       :source="visibleCode"
