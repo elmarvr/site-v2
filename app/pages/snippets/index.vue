@@ -8,7 +8,10 @@ const collection = computed(() => {
 });
 
 const { data: snippets } = await useAsyncData(collection.value, () => {
-  return queryCollection(collection.value).order("date", "DESC").all();
+  return queryCollection(collection.value)
+    .select("title", "date", "path")
+    .order("date", "DESC")
+    .all();
 });
 
 const grouped = computed(() => {

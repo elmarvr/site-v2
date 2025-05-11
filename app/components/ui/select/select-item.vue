@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { type SelectItemProps, useForwardProps } from "reka-ui";
-import { computed } from "vue";
 
 interface Props extends SelectItemProps {
   class?: ClassValue;

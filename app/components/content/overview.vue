@@ -4,7 +4,10 @@ const { locale } = useI18n();
 const { data: projects } = await useAsyncData(
   `recent-projects_${locale.value}`,
   async () => {
-    return await queryCollection(`projects_${locale.value}`).limit(3).all();
+    return await queryCollection(`projects_${locale.value}`)
+      .select("title", "url")
+      .limit(3)
+      .all();
   }
 );
 
@@ -12,6 +15,7 @@ const { data: snippets } = await useAsyncData(
   `recent-snippets_${locale.value}`,
   async () => {
     return await queryCollection(`snippets_${locale.value}`)
+      .select("title", "date", "path")
       .order("date", "DESC")
       .limit(3)
       .all();
@@ -26,7 +30,7 @@ const { data: snippets } = await useAsyncData(
         {{ $t("projects.recent") }}
       </h2>
       <ul class="space-y-3">
-        <li v-for="project in projects" :key="project.id">
+        <li v-for="project in projects" :key="project.url">
           <a
             v-if="project.url"
             :href="project.url"
@@ -50,7 +54,7 @@ const { data: snippets } = await useAsyncData(
         {{ $t("snippets.recent") }}
       </h2>
       <ul class="space-y-3">
-        <li v-for="snippet in snippets" :key="snippet.id">
+        <li v-for="snippet in snippets" :key="snippet.path">
           <NuxtLink :to="snippet.path" class="hover:underline">
             {{ snippet.title }}
           </NuxtLink>

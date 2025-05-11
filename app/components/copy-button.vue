@@ -13,9 +13,9 @@ const { copy, copied } = useClipboard({ source });
     @click="copy()"
     :disabled="copied"
   >
-    <Icon v-if="!copied" mode="svg" name="ph:copy" />
+    <Icon v-if="!copied" name="ph:copy" />
 
-    <Icon v-else mode="svg" name="ph:check" />
+    <Icon v-else name="ph:check" />
   </UiButton>
 </template>
 

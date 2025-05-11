@@ -17,10 +17,9 @@ const { data: snippet } = await useAsyncData(route.path, () => {
 const { data: surrounding } = await useAsyncData(
   `${route.path}_surrounding`,
   () => {
-    return queryCollectionItemSurroundings(collection.value, route.path).order(
-      "date",
-      "DESC"
-    );
+    return queryCollectionItemSurroundings(collection.value, route.path, {
+      fields: ["title", "path"],
+    }).order("date", "DESC");
   }
 );
 </script>
@@ -36,7 +35,7 @@ const { data: surrounding } = await useAsyncData(
       </p>
     </div>
 
-    <LazyContentRenderer
+    <ContentRenderer
       :value="snippet"
       class="prose prose-zinc prose-invert max-w-none"
     />
