@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  item: {
+  page: {
     title: string;
     description: string;
   };
@@ -9,7 +9,7 @@ const props = defineProps<{
 const { locale } = useI18n();
 
 useHead({
-  title: props.item.title,
+  title: props.page.title,
   titleTemplate: `%s | elmarvr`,
   htmlAttrs: {
     lang: locale.value,
@@ -17,7 +17,7 @@ useHead({
   meta: [
     {
       name: "description",
-      content: props.item.description,
+      content: props.page.description,
     },
     { name: "viewport", content: "width=device-width, initial-scale=1.0" },
     { name: "charset", content: "utf-8" },

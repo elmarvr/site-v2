@@ -13,7 +13,7 @@ const { data: page } = await useAsyncData(route.path, async () => {
 
 <template>
   <div v-if="page">
-    <PageMeta :item="page" />
+    <PageMeta :page="page" />
     <ContentRenderer
       :value="page"
       class="prose prose-invert max-w-none prose-zinc prose-h2:no-underline prose-h2:text-base prose-h2:text-muted-foreground"

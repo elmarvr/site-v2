@@ -26,7 +26,7 @@ const { data: surrounding } = await useAsyncData(
 
 <template>
   <div v-if="page">
-    <PageMeta :item="page" />
+    <PageMeta :page="page" />
     <div class="pb-3">
       <h2 class="inline-flex text-lg">
         {{ page.title }}

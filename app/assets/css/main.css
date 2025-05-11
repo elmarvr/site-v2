@@ -12,7 +12,7 @@
   --color-accent: theme(colors.zinc.800);
   --color-accent-foreground: theme(colors.zinc.100);
   --color-muted: theme(colors.zinc.700);
-  --color-muted-foreground: theme(colors.zinc.500);
+  --color-muted-foreground: theme(colors.zinc.400);
   --color-card: theme(colors.zinc.800);
   --color-card-foreground: theme(colors.zinc.100);
 
